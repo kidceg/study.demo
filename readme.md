@@ -33,8 +33,52 @@ for(var i=0;i<a.length;i++){
 console.log(a);  //  [1, 2, 9, 33, 34, 55, 56, 66, 88, 91]
 ```
 
-
-
+### 2.数组移除空元素
+```javascript
+function func(arr){
+	for(var i = 0; i <= arr.length; i++){
+		if(arr[i]===''){
+		arr.splice(i,1);
+		i = i - 1;
+		}
+	}	
+	return arr;	
+}
+var arr = [1,99,'','',6,7,8,''];
+var result = func(arr);
+console.log(result); // 输出结果：[1,99,6,7,8];]
+```
+```javascript
+function func(arr){
+	var box = [];
+	for(var i = 0; i < arr.length; i++){
+		if(arr[i] !=='' ){
+         box.push(arr[i]);
+		}
+	}	
+	return box;	
+}
+var arr = [1,99,'','',6,7,8,'',''];
+var result = func(arr);
+console.log(result); // 输出结果：[1,99,6,7,8]
+```
+```javascript
+function func(arr){
+	for(var i = 0; i < arr.length; i++){
+		if(arr[i] === ''){
+			for(var j = i; j < arr.length - 1; j++){
+				arr[j] = arr[j+1];
+			}
+			i-= 1;
+			arr.length -=1;
+		}
+	}
+	return arr;
+}
+var arr = [1,99,'','',6,7,8,'',''];
+var result = func(arr);
+console.log(result); // 输出结果：[1,99,6,7,8]
+```
 
 
 
