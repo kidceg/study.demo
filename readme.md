@@ -80,6 +80,62 @@ var result = func(arr);
 console.log(result); // 输出结果：[1,99,6,7,8]
 ```
 
+###  3.数组查找是否包含某些字符串
+
+```javascript
+Given two arrays of strings a1 and a2 return a sorted array r in lexicographical order of the strings of a1 which are substrings of strings of a2.
+
+#Example 1: a1 = ["arp", "live", "strong"]
+a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+returns ["arp", "live", "strong"]
+
+#Example 2: a1 = ["tarp", "mice", "bull"]
+a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+returns []
+```
+```javascript
+测试用
+var a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+var a1 = ["xyz", "live", "strong"]
+console.log(inArray(a1, a2));   //["live", "strong"])
+
+var a1 = ["live", "strong", "arp"]
+console.log(inArray(a1, a2));    //["arp", "live", "strong"])
+
+var a1 = ["tarp", "mice", "bull"]
+console.log(inArray(a1, a2));   // []
+```
+```javascript
+function inArray(array1,array2){
+	var array3 = [];
+   for(var i = 0 ; i <array1.length ; i++){
+   	 var pattern = RegExp(array1[i]);
+   	 if(pattern.test(array2) ==true && array1[i]!==undefined){
+   	 	array3.push(array1[i])
+   	 }
+   }
+   return array3.sort();
+}
+```
+
+```javascript
+//arr.filter()检测数值元素，并返回符合条件所有元素的数组。
+//arr.join()把数组的所有元素放入一个字符串
+//arr.indexOf()搜索数组中的元素，并返回它所在的位置。
+function inArray(arr1, arr2) {
+  return arr1.filter(function(needle) {
+    return arr2.some(function(haystack) {
+      return haystack.indexOf(needle) > -1;
+    });
+  }).sort();
+}
+```
+```javascript
+function inArray(array1,array2){
+    return array1.filter(function(value){return (array2.join('-').indexOf(value))!=-1}).sort();
+}
+```
+
 
 
 
