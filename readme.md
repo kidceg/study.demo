@@ -136,7 +136,38 @@ function inArray(array1,array2){
 }
 ```
 
+###  4.将数组变成电话号码
 
+```
+createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
+```
+
+```javascript
+function createPhoneNumber(numbers){
+   var pattern = /(\d{3})(\d{3})(\d{4})/
+   pattern.test(numbers.join(''));
+   return '('+ RegExp.$1 +')'+ ' ' + RegExp.$2 +'-'+RegExp.$3;
+}
+
+console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
+```
+
+```javascript
+function createPhoneNumber(numbers){
+  return numbers.join('').replace(/(...)(...)(.*)/, '($1) $2-$3');
+}
+```
+
+```javascript
+function createPhoneNumber(numbers){
+  var format = "(xxx) xxx-xxxx";  
+  for(var i = 0; i < numbers.length; i++)
+  {
+    format = format.replace('x', numbers[i]);
+  }  
+  return format;
+}
+```
 
 
 
