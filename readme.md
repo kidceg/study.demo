@@ -169,5 +169,69 @@ function createPhoneNumber(numbers){
 }
 ```
 
+###  5. 找出特殊数字如135 = 1^1 + 3^2 + 5^3
 
+ 89 = 8^1 + 9^2 
+
+  135 = 1^1 + 3^2 + 5^3
+
+```javascript
+console.log(sumDigPow(1, 10));    //[1, 2, 3, 4, 5, 6, 7, 8, 9]
+console.log(sumDigPow(1, 200));   //[1, 2, 3, 4, 5, 6, 7, 8, 9, 89, 135, 175]
+console.log(sumDigPow(99, 100));  //[]
+```
+```javascript
+function sumDigPow(a, b) {
+  var arr = [];
+  for (var i = a; i <= b; i++) {
+    var sum = 0;
+    for (var j = 0; j <= String(i).length; j++) {
+      sum += Math.pow(parseInt(String(i)[j]), j+1);  
+      if (sum === i) arr.push(i);
+    }
+  }
+  return arr;
+}
+```
+
+* forEach方法
+```javascript
+function sumDigPow(a, b) {
+  var c = a, result =[];
+  while(c < b){
+    var sum = 0;
+    (c+'').split('').forEach(function(v, i){
+      sum += Math.pow(v, i+1);
+    });
+    if(c === sum)result.push(c);
+    c++;
+  }
+  return result;
+}
+```
+* forEach方法中的function回调有三个参数：第一个参数是遍历的数组内容，第二个参数是对应的数组索引，第三个参数是数组本身
+
+
+```javascript
+var arr = [1,2,3,4];
+arr.forEach(alert);
+```
+等价于：
+
+```javascript
+var arr = [1, 2, 3, 4];
+for (var k = 0, length = arr.length; k < length; k++) {
+ alert(array[k]);
+}
+```
+
+比如：
+```javascript
+var arr = [1,2,3,4];
+arr.forEach(function(value,index,array){
+    array[index] == value;    //结果为true
+    sum+=value;  
+    });
+console.log(sum);    //结果为 10
+```
 
