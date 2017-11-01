@@ -235,3 +235,74 @@ arr.forEach(function(value,index,array){
 console.log(sum);    //结果为 10
 ```
 
+### 6 url关键字匹配
+```javascript
+console.log(domainName("http://github.com/carbonfive/raygun"));  //"github" 
+console.log(domainName("http://www.zombie-bites.com"));  //"zombie-bites"
+console.log(domainName("https://www.cnet.com"));   // "cnet"
+console.log(domainName('mailto:user@foo.example''));  // "foo"
+```
+```javascript
+function domainName(url){
+    if (/www\./.test(url) == true) {
+      url.match(/www\.([\w\-]+)/);
+      return RegExp.$1;
+    } else if (/\/\//.test(url) == true) {
+      url.match(/\/\/([\w\-]+)/);
+      return RegExp.$1;
+    } else {
+      url.match(/([\w\-]+)\./);
+      return RegExp.$1;
+    }
+}
+```
+```javascript
+function domainName(url){
+  return url.match(/(?:http(?:s)?:\/\/)?(?:w{3}\.)?([^\.]+)/i)[1];
+}
+```
+```javascript
+function domainName(url){
+  url = url.replace("https://", '');
+  url = url.replace("http://", '');
+  url = url.replace("www.", '');
+  return url.split('.')[0];
+};
+```
+```javascript
+function domainName(url){
+  return  url.replace('http://', '')
+             .replace('https://', '')
+             .replace('www.', '')
+             .split('.')[0];
+}
+```
+```javascript
+function domainName(url){
+  return url.replace(/(https?:\/\/)?(www\.)?/, '').split('.')[0]
+}
+```
+```javascript
+function domainName(url){
+ return url.replace("www.","").match(/[\w-]+(?=\.)/)[0];
+}
+```
+```javascript
+function domainName(url){  
+  return url.replace(/.+\/\/|www.|\..+/g, '')
+}
+```
+```javascript
+function domainName(url){
+  var cleanUrl = '';
+  var restricted = ['de', 'br', 'fr', 'io', 'it', 'net', 'info', 'tv', 'name', 'users', 'pro', 'img', 'error', 'uk', 'warez', 'www', 'ru', 
+  'http', 'https', 'com', 'co', 'jp', 'us', 'net', 'org', 'edu', 'biz', 'za', 'index', 'php', 'kata', 'default', 'html', 'archive', 'error'];
+  var splitAddr = url.split(/[/.:]/);
+  for(var i = 0; i < splitAddr.length; i++) {
+    if(restricted.indexOf(splitAddr[i]) == -1) {
+      cleanUrl += splitAddr[i];
+    }
+  }
+  return cleanUrl;
+}
+```
