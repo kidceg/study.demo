@@ -306,3 +306,50 @@ function domainName(url){
   return cleanUrl;
 }
 ```
+
+### 7 数组去重，按大小排序
+
+```javascript
+console.log(noRepeat([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+//[4, 2, 1, -1, -2, -3, -5]
+console.log(noRepeat([-14, 10, -13, 4, -21, 2, 1, -5, 4])); 
+//[10, 4, 2, 1, -5, -13, -14, -21]
+
+//数组去重
+function noRepeat(arr) {
+  var arrnew = [];
+  for (var i = 0; i <arr.length; i++){
+    if (arrnew.indexOf(arr[i]) == -1) {
+      arrnew.push(arr[i])
+    } 
+  }
+
+//降序(从大到小)，如果改成升序把“b-a”改成‘a-b’
+  function compare(a,b) {
+    return b - a;
+  }
+  
+//数组按从大到小排序
+  arrnew.sort(compare);
+  return arrnew;
+}
+```
+```javascript
+//  只是数组去重
+var arr = [1,2,3,3,44,55,55,77,2,3,1];
+  function noRepeat() {
+      var arry = {};
+      var j = 0;
+      var arr2 = [];
+      for (var i = 0;i < arr.length; i++) {
+          if (arry[arr[i]] == undefined){ 
+        arry[arr[i]] = 1;
+        arr2[j++] = arr[i];
+    } else if (arry[arr[i] == 1]) {
+      continue;
+    }
+ }
+  return arr2
+ }
+ console.log(noRepeat());
+```
