@@ -353,3 +353,72 @@ var arr = [1,2,3,3,44,55,55,77,2,3,1];
  }
  console.log(noRepeat());
 ```
+### 8 首字母大写，并去掉间隔符
+
+```javascript
+
+console.log(toCamelCase("the-stealth-warrior"));  //  theStealthWarrior (第二个单词开始首大写)
+console.log(toCamelCase("The_Stealth_Warrior"))  //  TheStealthWarrior
+
+function toCamelCase(str) {
+  if (str == ''){
+    return '';
+  }
+  var strnew = str.replace(/[^a-zA-Z]/g,'-');
+  var b = strnew.split('-');
+  for (var i = 1; i < b.length; i++) {    //如果从第一个单词开始首字母大写就改成 i=0；
+    b[i] = b[i][0].toUpperCase()+b[i].slice(1);  //首字母大写
+
+  }
+  return b.join('');
+}
+```
+```javascript
+function toCamelCase(str){
+      var regExp=/[-_]\w/ig;
+      return str.replace(regExp,function(match){
+            return match.charAt(1).toUpperCase();
+       });
+}
+```
+```javascript
+function toCamelCase(str){
+  return str.replace(/([-_])(\w)/g, function(match,dash,letter) { return letter.toUpperCase() });
+}
+```
+```javascript
+function toCamelCase(str) {
+  return str.replace(/[_-][A-Za-z]/g, function(match) {return match[1].toUpperCase();});
+}
+```
+```javascript
+function toCamelCase(str){
+  var strArray;
+  if (str.indexOf('-') !== -1){ 
+    strArray = str.split('-');
+  } else {
+    strArray = str.split('_');  
+  }
+  var camelCase = strArray[0];
+  for (var i=1, len=strArray.length; i < len; i++){
+    var capitalized = strArray[i].substr(0, 1).toUpperCase() + strArray[i].slice(1);
+    camelCase += capitalized;
+  }
+  return camelCase;
+  
+
+}
+```
+```javascript
+function toCamelCase(str){
+ str = str.split(/[-_]/);
+ for(var i = 1;i < str.length;i++){
+ 
+   str[i] = str[i].charAt(0).toUpperCase().concat(str[i].slice(1));
+ 
+ }
+ return str.join("");
+}
+```
+
+
