@@ -421,4 +421,52 @@ function toCamelCase(str){
 }
 ```
 
+### 9 求一个数能否开方
 
+```javascript
+console.log(isPP(4));   // [2,2], "4 = 2^2"
+console.log(isPP(9)); //  [3,2], "9 = 3^2"
+console.log(isPP(5)); // null
+console.log(isPP(81)); //[3,4]
+
+function isPP(n){
+  for (var m = 2; m <= Math.floor(Math.sqrt(n)); ++m) {
+    var k = Math.round(Math.log(n) / Math.log(m))
+    if (Math.pow(m, k) == n) return [m, k];
+  }
+  return null;
+}
+```
+```javascript
+function isPP(n) {
+  for (var m = 2; m * m <= n; ++ m)
+    for (var k = 2; Math.pow(m, k) <= n; ++ k)
+      if (Math.pow(m, k) == n) return [m, k];
+  return null;
+}
+```
+```javascript
+var isPP = function(n){
+  var x=Math.sqrt(n);
+  if (x%1==0) return [x,2];
+  for (var i=2;i<x;i++) {
+    if (n%i==0){
+      for (var j=0,tmp=i;tmp<=n;tmp*=i,j++){
+        if (tmp==n) return [i,j+1];
+      }
+    }
+  }
+  return null;
+}
+```
+```javascript
+var isPP = function(n){
+  for(var i = Math.floor(Math.log(n)/Math.log(2)); i > 1; i--) {
+    var rt = Math.round(Math.pow(n, 1/i));
+    if(Math.pow(rt, i) === n) {
+      return [rt, i];
+    }
+  }
+  return null;
+}
+```
