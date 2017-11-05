@@ -470,3 +470,79 @@ var isPP = function(n){
   return null;
 }
 ```
+
+### 10 将数组里的0放到数组后面
+
+```javascript
+console.log(moveZeros([false,10,0,1,2,0,1,3,"a"])); 
+// returns[false,1,1,2,1,3,"a",0,0]
+
+function moveZeros(arr) {
+  var j = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if(arr[i] === 0) {
+      arr.splice(i,1);
+      j += 1;
+      i = i - 1;
+    }
+  }
+  for (var k = 0; k < j; k++){
+    arr.push(0);
+  }
+  return arr;
+}
+```
+
+```javascript
+function moveZeros(arr) {
+  return arr.filter(function(x) {return x !== 0}).concat(arr.filter(function(x) {return x === 0;}));
+}
+```
+```javascript
+function moveZeros(arr) {
+  var filtedList = arr.filter(function (num){return num !== 0;});
+  var zeroList = arr.filter(function (num){return num === 0;});
+  return filtedList.concat(zeroList);
+}
+```
+```javascript
+function moveZeros(arr) {
+  var zeroes = [];
+  var withoutZeros = arr.filter(function(value){
+    if(value === 0) {
+      zeroes.push(0);
+      return false;
+    }
+    return true;
+  });
+  
+  return withoutZeros.concat(zeroes);
+}
+```
+```javascript
+function moveZeros(arr) {
+  return arr.reduceRight(function(prev, curr) {
+    if (curr !== 0) {
+      prev.unshift(curr);
+    }
+    else {
+      prev.push(curr);
+    }
+    return prev;
+  }, []);
+}
+```
+```javascript
+function moveZeros(arr) {
+  var result = [];
+  var zeros = [];
+  for (var i in arr) {
+    if (arr[i] === 0) {
+      zeros.push(arr[i]);
+    } else if (arr[i] !== 0) {
+      result.push(arr[i]);
+    }
+  }
+  return result.concat(zeros);
+}
+```
