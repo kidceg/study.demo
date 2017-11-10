@@ -563,3 +563,50 @@ function add(x) {
 console.log(add(1)(2)(3));  //6
 console.log(add(1)(2)(3)(4));   //10
 ```
+### 12 two sum
+
+Given an array of integers, return **indices** of the two numbers such that they add up to a specific target.
+
+You may assume that each input would have **exactly** one solution, and you may not use the *same* element twice.
+
+**Example:**
+
+```
+Given nums = [2, 7, 11, 15], target = 9,
+
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].
+```
+
+```javascript
+console.log(twoSum([2, 7, 11, 15],22));//[1, 3]
+console.log(twoSum([2, 7, 11, 15],9));//[0, 1]
+```
+```javascript
+function twoSum(nums, target) {
+  var len = nums.length
+  var sum;
+  var result;
+    for(var i = 0; i <len; i++ ){
+       for(var j = i+1 ; j < len ; j++){
+        sum = nums[i] + nums[j]
+        if ( sum === target) {
+          result = [i,j]
+          return result;
+        }
+       }
+    }
+};
+```
+```javascript
+var twoSum = function(nums, target) {
+    var len = nums.length;
+    var exist = {}
+    for(var i = 0; i < len; i++){
+       if (exist[target - nums[i]] !== undefined){
+           return [exist[target-nums[i]], i];
+       }
+       exist[nums[i]] = i
+    }
+};
+```
