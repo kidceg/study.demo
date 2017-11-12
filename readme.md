@@ -696,3 +696,156 @@ function moveZeros(arr) {
   return ret[0].concat(ret[1]);
 }
 ```
+### 14 把0放到后面
+
+You are NOT allowed to use any temporary arrays or objects. You are also not allowed to use any Array.prototype or Object.prototype methods.
+
+要求不能使用array prototype的方法
+
+```JavaScript
+console.log(removeZeros([7, 2, 3, 0, 4, 6, 0, 0, 13, 0, 78, 0, 0, 19, 14]));
+//[7, 2, 3, 4, 6, 13, 78, 19, 14, 0, 0, 0, 0, 0, 0]
+```
+```JavaScript
+function removeZeros(array) {
+    var end = array.length;
+    for (var i = 0; i < end; i++) {
+        if (array[i] === 0 || array[i] === "0") {
+            arrayShiftToEnd(array, i);
+            i--;
+            end--;
+        }
+    }
+    return array;
+}
+
+function arrayShiftToEnd(array, n) {
+    var end = array[n]
+    for(var i = n; i <  array.length; i++) {
+        array[i] = array[i + 1]
+    }
+    array[array.length - 1] = end;
+
+    return array
+}
+```
+```JavaScript
+function removeZeros(array) {
+    if (array.length === 0) return array;
+    var zeroCount = 0; //keeps track of zeros so we know when to exit for loop
+    for (var i = 0, len = array.length; i < len; i++) {
+        if (array[i] === 0 || array[i] === '0') { //shuffle numbers back one space and put zero at end
+            zeroCount += 1;
+
+            for (var j = i + 1; j < len; j++) {//this looks for non-zero after i of array
+                var itemToMoveUp = array[j]; //non-zero number at end to swap places with zero num
+                array[j] = array[j-1]; //set index of num we will move up to zero
+                array[j-1] = itemToMoveUp; //now the zero has been swapped for a non-zero
+            }
+
+            i -= 1; //move index back one because next item is now one index lower
+        }
+        if (i + 1 + zeroCount >= len){ //if only zeros that were moved are left -> end
+            return array;
+        }
+    }
+}
+```
+```JavaScript
+function removeZeros(array) {
+  const head = []
+  const tail = []
+  for (const e of array) {
+    if (e === 0 || e === "0") {
+      tail[tail.length] = e
+    } else {
+      head[head.length] = e
+    }
+  }
+  return [...head, ...tail]
+}
+```
+```JavaScript
+function removeZeros(array) {
+    var limit = array.length;
+    var tmp;
+    for (var i = 0; i < limit; i++) {
+        if (array[i] === 0 || array[i] === '0') {
+            tmp = array[i];
+            for (var j = i--; j < array.length-1; j++) {
+                array[j] = array[j+1];
+            }
+            array[array.length-1] = tmp;
+            limit--;
+        }
+    }
+    return array;
+}
+```
+```JavaScript
+function removeZeros(arr) {
+  for(var jmax=arr.length, i=jmax-2; i>-1; --i)
+    if(''+arr[i] === '0')
+      for(var j=(--jmax, i+1); j<=jmax; j++)
+        arr[j-1] = [ arr[j], arr[j]=arr[j-1] ][0]
+  return arr;
+}
+```
+```JavaScript
+function removeZeros(arr) {
+    for (var i = 0, s = false, c = 0; i < arr.length - 1; i++)
+        ("" + arr[i] == "0" && "" + arr[i + 1] != "0") &&
+        (c=arr[i], arr[i]=arr[i + 1], arr[i + 1]=c, i = 0, s = true);
+    return !s ?arr :removeZeros(arr);
+}
+```
+```JavaScript
+function removeZeros(array) {
+  var zeros = [];
+  var normal = [];
+  for(var i = 0 ; i <= array.length-1; i++){
+    if(array[i] === '0' || array[i] === 0) zeros[zeros.length] = array[i];
+    else normal[normal.length] = array[i];
+  }
+  for(var i = 0 ; i <= zeros.length-1; i++){
+    normal[normal.length] = zeros[i];
+  }  
+  
+  return normal;
+}
+```
+```JavaScript
+function isZero (n) {
+  return n === 0 || n === '0';
+}
+function removeZeros(array) {
+  var i, j, tmp;
+  for (i = array.length-1; i > 0; i--)
+    for (j = 1; j <= i; j++)
+      if (isZero(array[j-1]) && !isZero(array[j])) {
+        tmp = array[j-1];
+        array[j-1] = array[j];
+        array[j] = tmp;
+      }
+  return array;
+}
+```
+```JavaScript
+function removeZeros(array) {
+  function zero(e) {
+    return String(e) === '0';
+  }
+  
+  for (var i = array.length - 1; i --> 0;) {
+    var e = array[i];
+    if (!zero(e)) continue;
+    for (var j = i + 1; j < array.length; j++) {
+      var f = array[j];
+      if (zero(f)) break;
+      array[j - 1] = f;
+      array[j] = e;
+    }
+  }
+  return array;
+}
+```
