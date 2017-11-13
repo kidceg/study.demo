@@ -849,3 +849,160 @@ function removeZeros(array) {
   return array;
 }
 ```
+
+### 15 字符串变成数字相加，包括大数字
+
+```javascript
+console.log(sumStrings('712569312664357328695151392', '8100824045303269669937')); 
+ // '712577413488402631964821329'
+console.log(sumStrings('1', '2')); 
+ // '3'
+```
+
+```javascript
+String.prototype.reverse = function() {
+  return this.split('').reverse().join('');
+}
+
+function sumStrings(a,b) {
+  a = a.reverse(); b = b.reverse();
+  var carry = 0;
+  var index = 0;
+  var sumDigits = [];
+  while (index < a.length || index < b.length || carry != 0) {
+    var aDigit = index < a.length ? parseInt(a[index]) : 0;
+    var bDigit = index < b.length ? parseInt(b[index]) : 0;
+    var digitSum = aDigit + bDigit + carry;
+    sumDigits.push((digitSum % 10).toString());
+    carry = Math.floor(digitSum / 10);
+    index++;
+  }
+  sumDigits.reverse();
+  while (sumDigits[0] == '0') sumDigits.shift();
+  return sumDigits.join('');
+}
+```
+```javascript
+function sumStrings(a, b) {
+  var res = '', c = 0;
+  a = a.split('');
+  b = b.split('');
+  while (a.length || b.length || c) {
+    c += ~~a.pop() + ~~b.pop();
+    res = c % 10 + res;
+    c = c > 9;
+  }
+  return res.replace(/^0+/, '');
+}
+```
+```javascript
+function sum(n1, n2) {
+  return (parseInt(n1) || 0) + (parseInt(n2) || 0);
+}
+
+function sumStrings(a,b) { 
+  a = a.split("").reverse();
+  b = b.split("").reverse();
+  total = [];
+  var length = (a.length > b.length) ? a.length : b.length;
+  
+  //make the sum digit by digit
+  for (var i = 0; i < length; i++) {
+    s = sum(a[i], b[i]);
+    total[i] = sum(total[i], s);
+    if (total[i]>9) {
+      total[i] -= 10;
+      total[i+1] = 1;
+    }
+  }
+  
+  //remove fruitless zero
+  if (total[total.length-1] == 0) 
+    total[total.length-1] = "";
+    
+  //reverse the array and return the string
+  return total.reverse().join("");
+}
+```
+```javascript
+function sumStrings(a, b) {
+  a = "0" + a.replace(/\D/g,"");
+  b = "0" + b.replace(/\D/g,"");
+  var c = 0;
+  var result = "";
+
+  for(var i=b.length-a.length; i>0; --i) a = "0" + a;
+  for(var i=a.length-b.length; i>0; --i) b = "0" + b;
+
+  for(var i=a.length-1; i>-1; --i) {
+    c = +a[i] + +b[i] + c;
+    result = (c%10) + result;
+    c = Math.floor(c/10);
+  }
+  
+  return result.replace(/^0+/,"");
+}
+```
+```javascript
+function sumStrings(a,b) { 
+  var res="",c=0;
+  a=a.split("");b=b.split("");
+  while(a.length||b.length||c){
+    c=+(a.length>0?a.pop():0) + +(b.length>0?b.pop():0)+c;
+    res=(c%10).toString()+res;
+    c=Math.floor(c/10);
+  }
+  res=res.replace(/^[0]*/g,"");
+  return res;
+}
+```
+```javascript
+var sumStrings = function addIntStrings(a, b){
+   var nal = 15, //native addition limit
+       max = Math.max(a.length, b.length),
+       to,
+       from = -nal,
+       overflow = '',
+       result = '',
+       temp;
+   function nativeAdd(o, a, b){
+      var val = (+o + +a + +b).toString();
+      return [ val.slice( 0, -nal ) , val.slice( -nal ) ];
+   }
+   while(!(-to > max)){
+      temp = nativeAdd(overflow, a.slice( from, to ), b.slice( from , to ));
+      overflow = temp[0], result = temp[1] + result;
+      to = from;
+      from = from - nal;
+   }
+   return result;
+}
+```
+```javascript
+function sumStrings(a, b) {
+  a = a.split('').reverse(), b = b.split('').reverse();
+  return Array.apply(null, new Array(1 + Math.max(a.length, b.length))).reduce(function (acc, _, i) {
+    var n = (parseInt(a[i], 10) || 0) + (parseInt(b[i], 10) || 0) + acc[1];
+    return [(n % 10) + acc[0], Math.floor(n / 10)];
+  }, ['', 0])[0].replace(/^0+/, '');
+}
+```
+```javascript
+function sumStrings(a,b) { 
+   var A = a.replace(/^0*/, "").split("").reverse();
+   var B = b.replace(/^0*/, "").split("").reverse();
+   var res = "";
+   var tenths = 0;
+   while (A.length>0 || B.length>0) {
+     var a0 = A.length==0 ? 0 : +A[0];
+     var b0 = B.length==0 ? 0 : +B[0];
+     var d = a0 + b0 + tenths;
+     tenths = d>9 ? 1 : 0;
+     res = (d%10) + res;
+     A = A.slice(1);
+     B = B.slice(1);
+   }
+   if (tenths) res = "1"+res
+   return res;
+}
+```
