@@ -1006,3 +1006,74 @@ function sumStrings(a,b) {
    return res;
 }
 ```
+### 16  [1, 3, 4, 7, 9, 10, 13, 15, 19, 21, 22, 27, ...]
+
+1. The number `u(0) = 1` is the first one in `u`.
+2. For each `x` in `u`, then `y = 2 * x + 1` and `z = 3 * x + 1` must be in `u` too.
+3. There are no other numbers in `u`.
+
+Ex: `u = [1, 3, 4, 7, 9, 10, 13, 15, 19, 21, 22, 27, ...]`
+
+1 gives 3 and 4, then 3 gives 7 and 10, 4 gives 9 and 13, then 7 gives 15 and 22 and so on..
+
+```javascript
+console.log(dblLinear(10)); // 22
+console.log(dblLinear(11)); // 27
+```
+```javascript
+function dblLinear(n) {
+  var ai = 0, bi = 0, eq = 0;
+  var sequence = [1];
+  while (ai + bi < n + eq) {
+    var y = 2 * sequence[ai] + 1;
+    var z = 3 * sequence[bi] + 1;
+    if (y < z) { sequence.push(y); ai++; }
+    else if (y > z) { sequence.push(z); bi++; }
+    else { sequence.push(y); ai++; bi++; eq++; }
+  }
+  return sequence.pop();
+}
+```
+```javascript
+function dblLinear(n) {
+  
+    var u = [1], pt2 = 0, pt3 = 0; //two pointer
+    
+    for(var i = 1;i<=n;i++){
+      u[i] = Math.min(2* u[pt2] + 1, 3*u[pt3] + 1);
+      if(u[i] == 2 * u[pt2] + 1) pt2++;
+      if(u[i] == 3 * u[pt3] + 1) pt3++;
+    }
+
+    return u[n];
+  
+}
+```
+```javascript
+function dblLinear(n) {
+      var h = [];
+      var x2 = 1, x3 = 1;
+      var i = 0, j = 0;
+      for (var index = 0; index < n+1; index++)
+      {
+          h[index] = x2 < x3 ? x2 : x3;
+          if (h[index] == x2) x2 = 2 * h[i++] + 1;
+          if (h[index] == x3) x3 = 3 * h[j++] + 1;
+      }
+      return h[n];
+    
+}
+```
+```javascript
+var cache = [1], [i2,i3] = [0,0];
+function dblLinear(n) {
+  while (cache.length <= n) {
+    while (calc2(i2) <= cache[cache.length - 1]) i2++;
+    while (calc3(i3) <= cache[cache.length - 1]) i3++;
+    cache.push(Math.min(calc2(i2), calc3(i3)));
+  }
+  return cache[n];
+}
+function calc2(n) { return 2 * cache[n] + 1; }
+function calc3(n) { return 3 * cache[n] + 1; }
+```
