@@ -1049,3 +1049,46 @@ function dblLinear(n) {
   
 }
 ```
+
+### 17.两个数字，一字符（+，-，*，/，分别代表加、减、乘、除）
+
+// 调用函数举例：func(2, 6, '+'); //传入一个整数, 输出结果：8
+
+    function func(a,b,c){
+    	if(c === '+'){
+    		return a + b;
+    	}else if(c === '-'){
+    		return a - b;
+    	}else if(c ==='/'){
+    		return (a/b).toFixed(2);
+    	}else if(c === '*'){
+    		return a*b;
+    	}else{
+    		return false;
+    	}
+    }
+    console.log( func(10,3,'/') ); // 3.33
+    console.log( func(20,2,'*') ); // 40
+    
+    function func(a,b,c){
+    	switch(c){
+    		case '+':
+    			return a+b;
+    			break;
+    		case '-':
+    			return a-b;
+    			break;
+    		case '/':
+    			return (a/b).toFixed(2);
+    			break;
+    		case '*':
+    			return a*b;
+    			break;
+    		default:
+    			return false;
+    	}
+    }
+    console.log( func(10,3,'/') ); // 3.33
+    console.log( func(20,2,'*') ); // 40
+
+
