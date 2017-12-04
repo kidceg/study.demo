@@ -1091,4 +1091,23 @@ function dblLinear(n) {
     console.log( func(10,3,'/') ); // 3.33
     console.log( func(20,2,'*') ); // 40
 
-
+### 18.数组逆序排序
+```javascript
+var arr_1 = [1,2,3,4,5,6,7,8];
+function reversal( good ){
+	var happy = [];
+	var j = good.length - 1;
+	for(var i = 0; i < good.length; i++){
+		happy[j] = good[i];
+		j--;
+	}
+	return happy;
+}
+var arr_2 = reversal(arr_1);
+console.log(arr_2);   //[8, 7, 6, 5, 4, 3, 2, 1]
+```
+```javascript
+var arr =['a','b'];
+arr.reverse();//reverse用于将数组逆序
+console.log(arr);  //['b','a']
+```
