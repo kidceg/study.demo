@@ -1111,3 +1111,52 @@ var arr =['a','b'];
 arr.reverse();//reverse用于将数组逆序
 console.log(arr);  //['b','a']
 ```
+###  19.DNAStrand（A-T,C-G） < key,value >键值对
+
+Examples
+
+```
+DNAStrand ("ATTGC") // return "TAACG"
+DNAStrand ("GTAT") // return "CATA"
+```
+
+方法一:使用正则配对
+
+```javascript
+function DNAStrand(dna){
+  return dna.replace(/A/g, 't').replace(/T/g, 'a').replace(/C/g, 'g').replace(/G/g, 'c').toUpperCase();
+}
+
+console.log(DNAStrand("ATTGC"));//TAACG
+console.log(DNAStrand("GTAT"));//CATA
+```
+
+方法二：使用 < key,value >键值对
+
+```javascript
+var pairs = {'A':'T','T':'A','C':'G','G':'C'};
+function DNAStrand(dna) {
+  return dna.replace(/./g, function(y) {
+    return pairs[y];
+  });
+}
+
+console.log(DNAStrand("ATTGC"));//TAACG
+console.log(DNAStrand("GTAT"));//CATA
+```
+
+方法三
+
+- split() 方法用于把一个字符串分割成字符串数组( 如："2:3:4:5".split(":") //将返回["2", "3", "4", "5"])
+- map() 方法返回一个新数组，数组中的元素为原始数组元素按顺序依次调用函数处理后的值
+
+```javascript
+var pairs = {'A':'T','T':'A','C':'G','G':'C'};
+function DNAStrand(dna){
+  return dna.split('').map(function(y){ return pairs[y] }).join('');
+}
+
+console.log(DNAStrand("ATTGC"));//TAACG
+console.log(DNAStrand("GTAT"));//CATA
+```
+
