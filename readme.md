@@ -1160,3 +1160,46 @@ console.log(DNAStrand("ATTGC"));//TAACG
 console.log(DNAStrand("GTAT"));//CATA
 ```
 
+### 20.阶乘5! = 5x4x3x2x1
+```javascript
+function func(num){
+  if(num <0){
+    return -1;
+  }
+  if(num == 0){
+    return 1;
+  }
+  return num*(func(num-1));
+}
+console.log(func(5));
+```
+```javascript
+function func(n){
+	var temp = 1;
+	for(var i = n; i >= 1; i--){
+        temp = temp * i;
+	}
+	return temp;
+}
+console.log(func(1));
+```
+```javascript
+var factorial = function(num){
+  if(num <= 1){
+    return 1;
+  }else {
+    return num * factorial(num-1);
+  }
+}
+console.log(factorial(3)); //6
+```
+```javascript
+//递归法
+function func(n){
+    if(n===1){
+    	return 1;
+    }
+     return func(n-1)*n;   
+}
+console.log(func(5));
+```
