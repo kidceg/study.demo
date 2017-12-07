@@ -1203,3 +1203,70 @@ function func(n){
 }
 console.log(func(5));
 ```
+### 21.费波那契数列
+已知faibonacai(费波那契)数列的前几个数分别为1,1,2,3,5,8,13,……,编程求此数列的前n（n＞＝５）项。
+输入说明：一个整数n（>=5 and <=22），表示数列的前n个数。
+输出样例 ：
+1
+1
+2
+3
+5
+```javascript
+ function fn(n){
+
+	if(n===1 || n===2){
+		return 1;
+	}	
+	return fn(n-1)+fn(n-2);   
+}
+function func(n){
+	for(var i = 1; i <=n; i++){
+		document.write(fn(i)+'</br>');
+	}
+}
+console.log(func(8));   //递归算法
+```
+```javascript
+function func(n){
+  var n1 = 1;
+  var n2 = 1;
+  var n3 = 0;
+  document.write(n1+'</br>'+n2+'</br>');
+  for (i = 1; i <=n-2; i++){
+       n3 = n1 + n2;
+      document.write(n3+'</br>');
+        i += 1;
+        if(i<=n-2){
+          n1 = n3 + n2;  
+	       document.write(n1+'</br>');   
+           i += 1; 	
+        }
+         if(i<=n-2){      
+       n2 = n3 + n1;
+	       document.write(n2+'</br>');   
+        }
+  }
+}
+console.log(func(8));
+```
+```javascript
+//如果是用数组来表示而不是每行输出一个，就可以用下面的算法
+function func(n){
+	var arr = [1,1];
+   for(var i = 1; i <= n-2; i++){
+   	arr.push((arr[i]) + (arr[i-1]));
+   }
+   return arr;
+}
+console.log(func(7));// [1, 1, 2, 3, 5, 8, 13]
+```
+```javascript
+function func(n){
+   if(n=1||n=2){
+      return 1;     
+    } else {
+     return func(n-1)+func(n-2);
+    }
+}
+```
