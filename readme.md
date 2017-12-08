@@ -1270,3 +1270,30 @@ function func(n){
     }
 }
 ```
+### 22.求随机数
+
+*求随机数
+*求1-10随机一个整数
+```javascript
+var num = Math.floor(Math.random()*10+1);
+console.log(num);
+```
+* 求2-10随机一个整数
+```javascript
+var num = Math.floor(Math.random()*9+2);
+console.log(num);
+```
+* 求lowerValue-upperValue随机一个整数
+```javascript
+function selecFrom(lowerValue,upperValue){
+
+	var choices = upperValue - lowerValue + 1;
+	return Math.floor(Math.random() * choices + lowerValue);
+}
+var num = selecFrom(2,10)//介于2-10之间的整数，包括2、10
+console.log(num);
+//求数组中随机取出一个项
+var colors = ['red','blue','green','orange','yellow','black'];
+var color = colors[selecFrom(0, colors.length-1)];
+console.log(color);
+```
