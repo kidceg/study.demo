@@ -1297,3 +1297,30 @@ var colors = ['red','blue','green','orange','yellow','black'];
 var color = colors[selecFrom(0, colors.length-1)];
 console.log(color);
 ```
+### 23. 四位数abcd ,  ( ab + cd )( ab + cd ) = abcd 
+
+其中，ab代表两位数字组成整数，即10*a+b，而abcd代表四位数字的4位整数，即1000*a+100*b+10*c+1*d ,两个括号是乘积的关系。
+
+没有输入，输出abcd，从小到大，一行一个。
+
+```javascript
+function func(){
+    var j = 0, a = 0 , b = 0, c = 0, d = 0;
+	for(var i = 1000; i <= 9999; i++){
+           j = i.toString();
+           a = parseInt(j[0]);
+           b = parseInt(j[1]);
+           c = parseInt(j[2]);
+           d = parseInt(j[3]);
+     var temp = Math.pow(((a*10+b)+(c*10+d)),2); 
+        if(temp ===i){              //Math.pow(2,4),相当2^4=16;
+           document.write(temp+'</br>');
+        }
+    }
+}
+func();  
+```
+
+2025
+3025
+9801
