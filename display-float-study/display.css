@@ -1,0 +1,157 @@
+body{
+	width: 1300px;
+	height: 1500px;
+	margin: 30px auto;
+}
+
+span{
+	border: 1px solid #000;
+}
+
+.A5{
+	display: block;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 0;
+	text-align: center;
+	background-color: yellow;
+}
+
+.A1{
+	display: inline-block;
+	width: 350px;
+	height: 100px;
+	margin-right: 20px;
+	font-size: 15px;
+	background-color: yellowgreen;
+}
+
+.A2{
+	display: inline-block;
+	width: 350px;
+	height: 100px;
+	margin-right: 20px;
+	font-size: 15px;
+	background-color: yellowgreen;
+}
+
+.A3{
+	display: inline-block;
+	width: 350px;
+	height: 100px;
+	font-size: 15px;
+	background-color: yellowgreen;
+}
+
+.A4{
+	display: inline-block;
+	width: 350px;
+	height: 100px;	
+	margin-top: 20px;
+	font-size: 15px;
+	background-color: yellowgreen;
+}
+
+.B1{
+	width: 500px;
+	height: 100px;
+	margin-top: 30px;
+	float: left;
+	background-color: skyblue;
+}
+
+.B2{
+	width: 750px;
+	height: 100px;
+	margin-top: 30px;
+	float: right;
+	background-color: skyblue;
+}
+
+.C1{
+	width: 700px;
+	height: 180px;
+	margin-top: 30px;
+	float: left;
+	background-color: plum;
+}
+
+.C2{
+	width: 500px;
+	height: 100px;
+	margin-top: 30px;
+	float: right;
+	background-color: plum;
+}
+
+.C3{
+	width: 400px;
+	height: 100px;
+	margin-top: 30px;
+	float: right;
+	background-color: plum;
+}
+
+.D1{
+	width: 100%;
+	height: 70px;
+	margin-top: 30px;	
+	float: left;
+	background-color: pink;
+}
+
+.E1{
+	width: 500px;
+	height: 200px;
+	margin-top: 30px;
+	float: left;
+	background-color: gold;	
+}
+
+.E2{
+	width: 700px;
+	height: 60px;
+	margin-top: 30px;
+	float: right;
+	background-color: gold;
+}
+
+.E3{
+	width: 700px;
+	height: 60px;
+	margin-top: 8px;
+	float: right;
+	background-color: gold;
+}
+
+.E4{
+	width: 700px;
+	height: 60px;
+	margin-top: 8px;
+	float: right;
+	background-color: gold;
+}
+
+.F4{
+	width: 600px;
+	height: 100px;
+	margin-top: 30px;
+	float: left;
+	background-color: chocolate;
+}
+
+.F5{
+	width: 600px;
+	height: 200px;
+	margin-top: 30px;
+	float: right;
+	background-color: chocolate;
+}
+
+.F6{
+	width: 900px;
+	height: 100px;
+	margin-top: 30px;
+	float: right;
+	background-color: chocolate;
+}
