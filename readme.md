@@ -283,11 +283,6 @@ function domainName(url){
 }
 ```
 ```javascript
-function domainName(url){
- return url.replace("www.","").match(/[\w-]+(?=\.)/)[0];
-}
-```
-```javascript
 function domainName(url){  
   return url.replace(/.+\/\/|www.|\..+/g, '')
 }
