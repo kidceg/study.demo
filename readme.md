@@ -1374,3 +1374,16 @@ function func(n){
 2 5 9 14 20 27 35 
 1 3 6 10 15 21 28 36
 ```
+### 25.键入一个自然数 ，求这个自然数的所有约数之和
+```javascript
+function func(num1){
+	var temp =0;
+	for(var i = 1; i <=num1;i++){
+		if(num1 % i == 0){
+	       temp = temp + i;
+		}
+	}
+    return temp;
+}
+console.log( func(6) );// 输出结果：12
+```
