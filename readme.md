@@ -1387,3 +1387,49 @@ function func(num1){
 }
 console.log( func(6) );// 输出结果：12
 ```
+### 26.  计算数组元素中字母‘a'或‘A’出现的次数。
+
+输出：一个整数，为a或者A字符出现次数和。
+
+```javascript
+function func(arr){
+	var temp = 0;
+	for(var i = 0 ; i < arr.length; i++){
+		if(arr[i] === 'A'|| arr[i] === 'a'){
+             temp = temp + 1;
+		}
+	}
+	return temp;
+}
+var num = ['f','a','c','c','d','A','a','d'];
+console.log( func(num) );  //  3
+```
+注意，如下如果想计算多少个1，不能用 ==，1和true能相互转换，就会输出4，本来应该是3，把  arr[i] === 1 ,则正确输出3
+```javascript
+function func(arr){
+	var temp = 0;
+	for(var i = 0 ; i < arr.length; i++){
+		if(arr[i] == 1){
+	         temp = temp + 1;
+		}
+	}
+	return temp;
+}
+var num = ['f','a','c',true,1,1,1,0,0];
+console.log( func(num) );    //  4
+```
+
+注意，===里面 ‘1’和1是有区别的，无法全等
+```javascript
+function func(arr){
+	var temp = 0;
+	for(var i = 0 ; i < arr.length; i++){
+		if(arr[i] === '1'){
+	         temp = temp + 1;
+		}
+	}
+	return temp;
+}
+var num = ['f','a','c',true,1,1,1,0,0,0,0];
+console.log( func(num) );   //   0
+```
