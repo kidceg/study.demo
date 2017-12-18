@@ -1433,3 +1433,36 @@ function func(arr){
 var num = ['f','a','c',true,1,1,1,0,0,0,0];
 console.log( func(num) );   //   0
 ```
+### 27.求输入的一个整数的各位数字之和。
+
+比如输入一个：3334，那么得到的结果是 3+3+3+4 = 13
+```javascript
+function func(num){
+	var sum = 0;
+	var temp = 0;
+	while(num>0){
+		temp = num % 10;
+		num = Math.floor(num / 10);
+		sum += temp;
+	}
+	return sum;
+}
+var sum = func(2147483646);
+console.log(sum); // 45
+```
+
+```javascript
+function func(num){
+	var arr = num.toString();          //转换为字符串
+	var temp = 0;
+    var box = 0;
+	for( var i = 0; i < arr.length ; i++){
+	    box = parseInt(arr[i]，10); //转换为整数，10代表是十进制
+                            //parseFloat就是转换小数,只解析十进制
+		  temp = temp + box; 
+	}
+     return temp; 
+}
+var sum = func(2147483646);
+console.log(sum); // 45
+```
