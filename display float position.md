@@ -207,7 +207,46 @@ float 属性定义元素在哪个方向浮动。以往这个属性总应用于�
 
 而此浮动元素在文档流空出的位置，由后续的(非浮动)元素填充上去：块级元素直接填充上去，若跟浮动元素的范围发生重叠，浮动元素覆盖块级元素。内联元素：有空隙就插入。
 
+### 清除浮动的方法
 
+让我们先说主流的方法：
+
+clear: both/left/right
+除了“none”以外的任何属性值都将导致元素相应位置不允许浮动。
+
+overflow: hidden/auto
+float导致了元素坍塌，如果你想让父元素包含所有的float属性元素，那么考虑在父元素上使用overlow:hidden/auto
+
+clearfix
+最好的方法是使用clearfix属性，下面的代码适用到IE6。
+
+```
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+/* For IE 6/7 only */
+.clearfix {
+    *zoom: 1;
+}
+```
+
+
+如果你想适应IE8及其以上的，只要
+```
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+```
+
+
+你所要做的就是将clearfix类添加到包含floated的父元素上，你当然也可以使用overlow:hidden但是会导致很多布局上的其他问题。
 
 
 
