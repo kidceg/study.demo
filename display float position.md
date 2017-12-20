@@ -252,3 +252,4 @@ clearfix
 
 # position
 
+常用有relative、absolute、fixed
