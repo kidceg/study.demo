@@ -1466,3 +1466,33 @@ function func(num){
 var sum = func(2147483646);
 console.log(sum); // 45
 ```
+###  28.减肥数字
+
+每个体重数字，按各个数位数字之和，从小到大排列
+
+```JavaScript
+console.log(orderWeight("56 65 74 100 99 68 86 180 90"));//100 180 90 56 65 74 68 86 99
+```
+```JavaScript
+function orderWeight(strng) {
+  return strng
+    .split(" ")
+    .map(function(v) {  
+      return {
+        val: v,
+        key: v.split("").reduce(function(prev, curr) {
+          return parseInt(prev) + parseInt(curr);
+        }, 0)
+      };
+    })
+    .sort(function(a, b) {
+      return a.key == b.key 
+        ? a.val.localeCompare(b.val)
+        : (a.key - b.key);
+    })
+    .map(function(v) {
+      return v.val;
+    })
+    .join(" ");
+}
+```
