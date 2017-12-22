@@ -1496,3 +1496,9 @@ function orderWeight(strng) {
     .join(" ");
 }
 ```
+```JavaScript
+function orderWeight(s) {
+  return s.split(' ').sort((a,b) => sum(a) - sum(b) || a.localeCompare(b)).join(' ');
+}
+function sum(s) { return s.split('').reduce((s,v) => s + +v, 0); }
+```
