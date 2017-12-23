@@ -1502,3 +1502,10 @@ function orderWeight(s) {
 }
 function sum(s) { return s.split('').reduce((s,v) => s + +v, 0); }
 ```
+```JavaScript
+function orderWeight(strng) {
+  return strng.split(" ").sort(function f(a, b){ 
+    return eval(a.split("").join("+")) - eval(b.split("").join("+")) + ([a, b].sort()[1] == a ? 0.1 : -0.1);
+  }).join(" ");
+}
+```
