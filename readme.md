@@ -1509,3 +1509,26 @@ function orderWeight(strng) {
   }).join(" ");
 }
 ```
+```JavaScript
+function orderWeight(strng) {
+    
+    var w = function(n) {
+      
+        var s = 0;
+
+        n.toString().split('').forEach(function(v, k) {
+            s += +v;  
+        });
+        
+        return s;
+  
+    };
+
+    return strng.split(' ').sort(function(a, b) {
+          
+        return w(a) == w(b) ? (a > b ? 1 : -1 ) : w(a) - w(b);
+
+    }).join(' ');
+
+}
+```
