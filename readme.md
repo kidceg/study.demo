@@ -1532,3 +1532,16 @@ function orderWeight(strng) {
 
 }
 ```
+```JavaScript
+function digitSum(str) {
+  return str.split('').reduce(function(s, e) { 
+    return s + parseInt(e); 
+  }, 0);
+}
+
+function orderWeight(str) {
+    return str.split(' ').sort(function(a, b) {
+      return digitSum(a) - digitSum(b) || a.localeCompare(b);
+    }).join(' ');
+}
+```
