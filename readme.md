@@ -1545,3 +1545,23 @@ function orderWeight(str) {
     }).join(' ');
 }
 ```
+###  29.  Pig latin is cool
+
+#### Description:
+
+Move the first letter of each word to the end of it, then add 'ay' to the end of the word.
+
+将每个单词第一个字母放到该单词后面，后面再加ay，得到新句子。
+
+``` JavaScript
+console.log(pigIt('Pig latin is cool')); // igPay atinlay siay oolcay
+```
+
+方法一：使用正则
+
+```JavaScript
+function pigIt(str){
+  return str.replace(/(\w)(\w*)(\s|$)/g, "\$2\$1ay\$3")
+}
+```
+
