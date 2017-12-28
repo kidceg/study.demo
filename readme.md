@@ -1574,3 +1574,12 @@ function pigIt(str){
   }).join(' ');
 }
 ```
+```JavaScript
+function pigIt(str){
+  var words = str.split(" ");
+  for (w in words) {
+    words[w] = words[w].slice(1) + words[w].slice(0,1) + "ay"
+  }
+  return words.join(" ");
+}
+```
