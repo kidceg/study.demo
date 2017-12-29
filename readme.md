@@ -1583,3 +1583,8 @@ function pigIt(str){
   return words.join(" ");
 }
 ```
+```JavaScript
+function pigIt(str) {
+    return str.split(" ").map(function (e) {return e.slice(1) + e.charAt(0) + 'ay'}).join(' ');
+}
+```
