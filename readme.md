@@ -1588,3 +1588,37 @@ function pigIt(str) {
     return str.split(" ").map(function (e) {return e.slice(1) + e.charAt(0) + 'ay'}).join(' ');
 }
 ```
+### 30.画出一个星罗密布
+```javascript
+func(3);
+*****$
+***$$$
+*$$$$$
+func(4);
+*******$
+******$$
+*****$$$
+****$$$$
+***$$$$$
+**$$$$$$
+*$$$$$$$
+```
+```javascript
+function func(b){
+	var n = 2*b-1;
+	var x = '';
+	var y = '';
+ for(var k = n; k >0; k--){
+ 		var x = '';
+	    var y = '';
+	for( i = k; i >0; i--){
+		x = x + '*';
+	}
+	for( j = 0; j <= n-k; j++){
+		y = y + "$";
+	}
+	document.write(x + y + '</br>');
+ } 
+}
+func(5);
+```
