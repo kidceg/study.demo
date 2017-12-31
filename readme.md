@@ -1622,3 +1622,9 @@ function func(b){
 }
 func(5);
 ```
+###  31.判断一个数是否能开方得到整数，若不能返回-1，若能则返回该整数大1的整数的平方值，
+```javascript
+function findNextSquare(sq) {
+  return Math.sqrt(sq)%1? -1 : Math.pow(Math.sqrt(sq)+1,2);
+}
+```
