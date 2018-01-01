@@ -1628,3 +1628,13 @@ function findNextSquare(sq) {
   return Math.sqrt(sq)%1? -1 : Math.pow(Math.sqrt(sq)+1,2);
 }
 ```
+
+```javascript
+function findNextSquare(sq) {
+  var number = Math.sqrt(sq);
+  if(Math.round(number) === number) {  //四舍五入得到的书是否是它本身
+    return Math.pow(++number, 2)
+  }
+  return -1;
+}  
+```
