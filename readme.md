@@ -1638,3 +1638,11 @@ function findNextSquare(sq) {
   return -1;
 }  
 ```
+### 32.将数组[a,b,c,d,e],变成a-b-c-d-e
+```javascript
+var box = [4,6,7,4,56,43,];
+var pox = box.join('-');
+var vox = box.join('||');
+console.log(pox);
+console.log(vox);
+```
