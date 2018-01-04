@@ -1646,3 +1646,12 @@ var vox = box.join('||');
 console.log(pox);
 console.log(vox);
 ```
+### 33.  [1, 3, 4, 7, 9, 10, 13, 15, 19, 21, 22, 27, ...]
+
+1. The number `u(0) = 1` is the first one in `u`.
+2. For each `x` in `u`, then `y = 2 * x + 1` and `z = 3 * x + 1` must be in `u` too.
+3. There are no other numbers in `u`.
+
+Ex: `u = [1, 3, 4, 7, 9, 10, 13, 15, 19, 21, 22, 27, ...]`
+
+1 gives 3 and 4, then 3 gives 7 and 10, 4 gives 9 and 13, then 7 gives 15 and 22 and so on..
