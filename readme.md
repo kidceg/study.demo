@@ -1700,3 +1700,16 @@ function dblLinear(n) {
     
 }
 ```
+```javascript
+var cache = [1], [i2,i3] = [0,0];
+function dblLinear(n) {
+  while (cache.length <= n) {
+    while (calc2(i2) <= cache[cache.length - 1]) i2++;
+    while (calc3(i3) <= cache[cache.length - 1]) i3++;
+    cache.push(Math.min(calc2(i2), calc3(i3)));
+  }
+  return cache[n];
+}
+function calc2(n) { return 2 * cache[n] + 1; }
+function calc3(n) { return 3 * cache[n] + 1; }
+```
