@@ -1713,3 +1713,17 @@ function dblLinear(n) {
 function calc2(n) { return 2 * cache[n] + 1; }
 function calc3(n) { return 3 * cache[n] + 1; }
 ```
+```javascript
+function dblLinear(n) {
+  var u = [1],
+      bases = [2, 3],
+      indexes = [0, 0],
+      next;
+  while (u.length <= n) {
+    next = Math.min.apply(Math, indexes.map((index, i) => bases[i] * u[index] + 1));
+    u.push(next);
+    indexes = indexes.map((index, i) => index + (bases[i] * u[index] + 1 === next));
+  }
+  return u[n];
+}
+```
