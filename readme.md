@@ -1727,3 +1727,37 @@ function dblLinear(n) {
   return u[n];
 }
 ```
+```javascript
+var dpArray = [1];
+var lastProcessed = 0;
+
+function dblLinear(n) {
+  var x = 0;
+  var y = 0;
+  var i = 0;
+  while (lastProcessed <= n) {
+    x = dpArray[lastProcessed] * 2 + 1;
+    y = dpArray[lastProcessed] * 3 + 1;
+    for (i = dpArray.length - 1; i >= 0; i--) {
+      if (dpArray[i] === x) {
+        break;
+      }
+      else if (dpArray[i] < x) {
+        dpArray.splice(i + 1, 0 , x);
+        break;
+      }
+    }
+    for (i = dpArray.length - 1; i >= 0; i--) {
+      if (dpArray[i] === y) {
+        break;
+      }
+      else if (dpArray[i] < y) {
+        dpArray.splice(i + 1, 0 , y);
+        break;
+      }
+    }
+    lastProcessed++;
+  }
+  return dpArray[n];
+}
+```
