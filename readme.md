@@ -1761,3 +1761,36 @@ function dblLinear(n) {
   return dpArray[n];
 }
 ```
+```javascript
+function Heap(){
+  this.level = -1;
+  this.nums = [];
+  this.push = function(num){
+    for(var i = this.nums.length - 1; i >= 0; i--){
+      if(this.nums[i] <= num)
+        break;
+    }
+    if(this.nums[i] == num)
+      return;
+    this.nums.splice(i + 1, 0, num);
+  };
+  this.get = function(i){
+    return this.nums[i];
+  };
+}
+
+heap = new Heap();
+heap.push(1);
+heap.level++;
+
+function dblLinear(n){
+  var level = heap.level;
+  for(var i = level; i < n; i++){
+    var num = heap.get(i);
+    heap.push(2 * num + 1);
+    heap.push(3 * num + 1);
+    heap.level++;
+  }
+  return heap.get(n);
+}
+```
