@@ -1794,3 +1794,25 @@ function dblLinear(n){
   return heap.get(n);
 }
 ```
+```javascript
+function dblLinear(n, res = [1], iX = 0, iY = 0) {
+
+  while(res.length <= n) {
+    let last = res[res.length - 1];
+    let x = (2 * res[iX]) + 1;
+    let y = (3 * res[iY]) + 1;
+    
+    if(x < y) {
+      ++iX;
+      
+      last === x || res.push(x);
+    } else {
+      ++iY;
+  
+      last === y || res.push(y);
+    }
+  }
+  
+  return res[n];
+}
+```
