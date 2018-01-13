@@ -1816,3 +1816,18 @@ function dblLinear(n, res = [1], iX = 0, iY = 0) {
   return res[n];
 }
 ```
+```javascript
+function dblLinear(n) {
+    var h = 1, cnt = 0, q2 = [], q3 = [];
+    while (true) {
+        if (cnt >= n)
+            return h;
+        q2.push(2 * h + 1);
+        q3.push(3 * h + 1);
+        h = Math.min(q2[0], q3[0]);
+        if (h === q2[0]) h = q2.shift();
+        if (h === q3[0]) h = q3.shift();
+        cnt++;
+    }
+}
+```
