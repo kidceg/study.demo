@@ -1,3 +1,35 @@
+# margin padding border 
+
+![191935269513751](E:\Github+Desktop+for+win\gith..tion_317444273a93ac29_0003.0000_4d58bde1c4cef1d4\Githut\study.demo\191935269513751.gif)
+
+![1](E:\Github+Desktop+for+win\gith..tion_317444273a93ac29_0003.0000_4d58bde1c4cef1d4\Githut\study.demo\1.gif)
+
+
+
+![191935386296017](E:\Github+Desktop+for+win\gith..tion_317444273a93ac29_0003.0000_4d58bde1c4cef1d4\Githut\study.demo\191935386296017.jpg)
+
+
+
+![191935495578126](E:\Github+Desktop+for+win\gith..tion_317444273a93ac29_0003.0000_4d58bde1c4cef1d4\Githut\study.demo\191935495578126.jpg)
+
+![191936015368948](E:\Github+Desktop+for+win\gith..tion_317444273a93ac29_0003.0000_4d58bde1c4cef1d4\Githut\study.demo\191936015368948.jpg)
+
+
+
+当上下、左右margin值分别一致, 可简写为:前一个40px代表上下margin值，后一个40px代表左右margin值。
+
+```
+margin: 40px 40px; 
+```
+
+当上下左右margin值均一致，可简写为:
+
+```
+margin: 40px;
+```
+
+![191936129093657](E:\Github+Desktop+for+win\gith..tion_317444273a93ac29_0003.0000_4d58bde1c4cef1d4\Githut\study.demo\191936129093657.jpg)
+
 # display
 
 　　display属性用于规定元素生成的框类型
@@ -279,3 +311,32 @@ clearfix
 ### inherit
 
 规定应该从父元素继承 position 属性的值。
+
+# Mozilla建议的CSS书写顺序
+
+/* Suggested order:
+//显示属性
+
+* display
+* list-style
+* position
+* float
+* clear
+  //自身属性
+* width
+* height
+* margin
+* padding
+* border
+* background
+  //文本属性
+* color
+* font
+* text-decoration
+* text-align
+* vertical-align
+* white-space
+* other text
+* content
+  *
+  */
