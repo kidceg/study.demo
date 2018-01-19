@@ -340,3 +340,16 @@ clearfix
 * content
   *
   */
+
+移动端 的宽高
+
+![241757572625462](E:\Github+Desktop+for+win\gith..tion_317444273a93ac29_0003.0000_4d58bde1c4cef1d4\Githut\study.demo\241757572625462.jpg)
+
+![241806078874740](E:\Github+Desktop+for+win\gith..tion_317444273a93ac29_0003.0000_4d58bde1c4cef1d4\Githut\study.demo\241806078874740.jpg)
+
+![241821417469973](E:\Github+Desktop+for+win\gith..tion_317444273a93ac29_0003.0000_4d58bde1c4cef1d4\Githut\study.demo\241821417469973.jpg)
+
+
+
+# localStorage
+
