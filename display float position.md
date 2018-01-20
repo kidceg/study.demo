@@ -353,3 +353,194 @@ clearfix
 
 # localStorage
 
+首先在使用localStorage的时候，我们需要判断**浏览器是否支持localStorage这个属性**
+
+localStorage本身的特点有关，localStorage只支持string类型的存储。
+
+```javascript
+if(！window.localStorage){
+            alert("浏览器支持localstorage");
+            return false;
+        }else{
+            //主逻辑业务
+        }
+```
+
+### localStorage的写入，
+
+*localStorage的写入**有三种方法
+
+```javascript
+if(！window.localStorage){
+            alert("浏览器支持localstorage");
+            return false;
+        }else{
+            var storage=window.localStorage;
+            //写入a字段
+            storage["a"]=1;
+            //写入b字段
+            storage.a=1;
+            //写入c字段
+            storage.setItem("c",3);
+            console.log(typeof storage["a"]);
+            console.log(typeof storage["b"]);
+            console.log(typeof storage["c"]);
+        }
+```
+
+![728493-20160626105220610-1095267293](E:\Github+Desktop+for+win\gith..tion_317444273a93ac29_0003.0000_4d58bde1c4cef1d4\Githut\study.demo\728493-20160626105220610-1095267293.png)
+
+### localStorage的读取
+
+```javascript
+if(!window.localStorage){
+            alert("浏览器支持localstorage");
+        }else{
+            var storage=window.localStorage;
+            //写入a字段
+            storage["a"]=1;
+            //写入b字段
+            storage.a=1;
+            //写入c字段
+            storage.setItem("c",3);
+            console.log(typeof storage["a"]);
+            console.log(typeof storage["b"]);
+            console.log(typeof storage["c"]);
+            //第一种方法读取
+            var a=storage.a;
+            console.log(a);
+            //第二种方法读取
+            var b=storage["b"];
+            console.log(b);
+            //第三种方法读取
+            var c=storage.getItem("c");
+            console.log(c);
+        }
+```
+
+### localStorage的删、改这两个步骤
+
+```javascript
+if(!window.localStorage){
+            alert("浏览器支持localstorage");
+        }else{
+            var storage=window.localStorage;
+            //写入a字段
+            storage["a"]=1;
+            //写入b字段
+            storage.b=1;
+            //写入c字段
+            storage.setItem("c",3);
+            console.log(storage.a);
+            // console.log(typeof storage["a"]);
+            // console.log(typeof storage["b"]);
+            // console.log(typeof storage["c"]);
+            /*分割线*/
+            storage.a=4;
+            console.log(storage.a);
+        }
+```
+
+这个在控制台上面我们就可以看到已经a键已经被更改为4了
+
+**localStorage的删除**
+
+1、将localStorage的所有内容清除
+
+```javascript
+var storage=window.localStorage;
+            storage.a=1;
+            storage.setItem("c",3);
+            console.log(storage);
+            storage.clear();
+            console.log(storage);
+```
+
+2、 将localStorage中的某个键值对删除
+
+```javascript
+var storage=window.localStorage;
+            storage.a=1;
+            storage.setItem("c",3);
+            console.log(storage);
+            storage.removeItem("a");
+            console.log(storage.a);
+```
+
+控制台查看结果
+
+![728493-20160626115232188-571332017](E:\Github+Desktop+for+win\gith..tion_317444273a93ac29_0003.0000_4d58bde1c4cef1d4\Githut\study.demo\728493-20160626115232188-571332017.png)
+
+### localStorage的键获取
+
+```javascript
+var storage=window.localStorage;
+            storage.a=1;
+            storage.setItem("c",3);
+            for(var i=0;i<storage.length;i++){
+                var key=storage.key(i);
+                console.log(key);
+            }
+```
+
+使用key()方法，向其中出入索引即可获取对应的键
+
+一般我们会将JSON存入localStorage中，但是在localStorage会自动将localStorage转换成为字符串形式
+
+这个时候我们可以使用JSON.stringify()这个方法，来将JSON转换成为JSON字符串
+
+### JSON.stringify()
+
+```javascript
+if(!window.localStorage){
+            alert("浏览器支持localstorage");
+        }else{
+            var storage=window.localStorage;
+            var data={
+                name:'xiecanyong',
+                sex:'man',
+                hobby:'program'
+            };
+            var d=JSON.stringify(data);
+            storage.setItem("data",d);
+            console.log(storage.data);
+        }
+```
+
+读取之后要将JSON字符串转换成为JSON对象，使用JSON.parse()方法
+
+### JSON.parse()
+
+```javascript
+var storage=window.localStorage;
+            var data={
+                name:'xiecanyong',
+                sex:'man',
+                hobby:'program'
+            };
+            var d=JSON.stringify(data);
+            storage.setItem("data",d);
+            //将JSON字符串转换成为JSON对象输出
+            var json=storage.getItem("data");
+            var jsonObj=JSON.parse(json);
+            console.log(typeof jsonObj);
+```
+
+![728493-20160626124919578-638115637](E:\Github+Desktop+for+win\gith..tion_317444273a93ac29_0003.0000_4d58bde1c4cef1d4\Githut\study.demo\728493-20160626124919578-638115637.png)
+
+打印出来是Object对象
+
+另外还有一点要注意的是，其他类型读取出来也要进行转换
+
+
+
+
+
+
+
+
+
+
+
+
+
