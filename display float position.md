@@ -532,15 +532,57 @@ var storage=window.localStorage;
 
 另外还有一点要注意的是，其他类型读取出来也要进行转换
 
+# sessionStorage 
 
+需求方要求用户在一个列表页浏览时，点击一个列表进入详情页，返回要求记录用户刚刚浏览的位置，而不是重新刷新页面到了页面顶部。
 
+sessionStorage - 针对一个 session 的数据存储（**关闭窗口，存储的数据清空**）
 
+再理一下实现思路，①页面滚动，将滚动位置存到session中 → ②再次进到页面中，到session中取出上次保存的浏览位置 → ③滚动到对应位置
 
+#### setItem存储value
 
+　　用途：将value存储到key字段
+　　用法：.setItem( key, value)
+　　代码示例：
 
+```javascript
+ sessionStorage.setItem("key", "value"); 	localStorage.setItem("site", "js8.in");
+```
 
+#### 　　getItem获取value
 
+　　用途：获取指定key本地存储的值
+　　用法：.getItem(key)
+　　代码示例：
 
+```javascript
+var value = sessionStorage.getItem("key"); 	
+var site = localStorage.getItem("site");
+
+//滚动时保存滚动位置
+```
+
+```javascript
+$(window).scroll(function() {
+if($(document).scrollTop() != 0) {
+　　　　sessionStorage.setItem("offsetTop", $(window).scrollTop());//保存滚动位置
+　　　　　　　} 
+});
+```
+
+//onload时，取出并滚动到上次保存位置
+
+```javascript
+window.onload = function() {
+　　var _offset = sessionStorage.getItem("offsetTop");
+
+　　$(document).scrollTop(offsetTop);
+
+};
+```
+
+ 
 
 
 
