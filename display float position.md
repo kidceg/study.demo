@@ -892,3 +892,5 @@ function getsec(str)
 setCookie("name","hayden","s20");
 ```
 
+### 本地文件创建一个cookie不生效，会是什么原因导致？
+出于安全考虑，chrome本地环境cookie是禁止的，可以给他个服务器环境，或者用firebox。
