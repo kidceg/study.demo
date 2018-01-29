@@ -182,4 +182,27 @@ XHTML文件中id的命名
 
  
 
- 
+# calc基本用法
+
+**calc基本语法：**
+```
+ .class {width: calc(expression);}
+```
+ 它可以支持加，减，乘，除; 在我们做手机端的时候非常有用的一个知识点;
+ 优点如下：
+ \1. 支持使用 "+","-","*" 和 "/" 四则运算。
+ \2. 可以混合使用百分比(%),px,em,rem等作为单位可进行计算。
+ 浏览器的兼容性有如下：
+ IE9+，FF4.0+，Chrome19+，Safari6+
+ 如下测试代码：
+```
+<div class="calc">我是测试calc</div>
+```
+```
+.calc{
+    margin-left:50px;
+    padding-left:2rem;
+    width:calc(100%-50px-2rem);
+    height:10rem;
+}
+```
