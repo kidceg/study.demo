@@ -182,6 +182,8 @@ XHTML文件中id的命名
 
  
 
+
+
 # calc基本用法
 
 **calc基本语法：**
@@ -204,5 +206,34 @@ XHTML文件中id的命名
     padding-left:2rem;
     width:calc(100%-50px-2rem);
     height:10rem;
+}
+```
+# 移动开发基本知识点
+
+###一. 使用rem作为单位**
+
+```
+html { font-size: 100px; }
+@media(min-width: 320px) { html { font-size: 100px; } }
+@media(min-width: 360px) { html { font-size: 112.5px; } }
+@media(min-width: 400px) { html { font-size: 125px; } }
+@media(min-width: 640px) { html { font-size: 200px; } }
+```
+
+给手机设置100px的字体大小; 对于320px的手机匹配是100px，
+其他手机都是等比例匹配; 因此设计稿上是多少像素的话，那么转换为rem的时候，rem = 设计稿的像素/100 即可;
+
+###**二.  禁用a,button,input,optgroup,select,textarea 等标签背景变暗**
+
+在移动端使用a标签做按钮的时候或者文字连接的时候，点击按钮会出现一个 "暗色的"背景，比如如下代码：
+```
+  <a href="">button1</a>
+  <input type="button" value="提交"/>
+```
+在移动端点击后 会出现"暗色"的背景，这时候我们需要在css加入如下代码即可：
+
+```
+a,button,input,optgroup,select,textarea{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 ```
