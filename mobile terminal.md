@@ -237,3 +237,56 @@ a,button,input,optgroup,select,textarea{
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 ```
+###**三. meta基础知识点：**
+
+   1.页面窗口自动调整到设备宽度，并禁止用户及缩放页面。
+
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+```
+
+ 属性基本含义：
+  content="width=device-width：
+  控制 viewport 的大小,device-width 为设备的宽度
+  initial-scale - 初始的缩放比例
+  minimum-scale - 允许用户缩放到的最小比例
+  maximum-scale - 允许用户缩放到的最大比例
+  user-scalable - 用户是否可以手动缩放
+
+2.忽略将页面中的数字识别为电话号码
+```
+  <meta name="format-detection" content="telephone=no" />
+```
+ \3. 忽略Android平台中对邮箱地址的识别
+  ``` <meta name="format-detection" content="email=no" />```
+
+ \4. 当网站添加到主屏幕快速启动方式，可隐藏地址栏，仅针对ios的safari
+``` <meta name="apple-mobile-web-app-capable" content="yes" />```
+
+ \5. 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式
+``` <meta name="apple-mobile-web-app-status-bar-style" content="black" />```
+
+``` <!-- 可选default、black、black-translucent -->```
+ \6. 需要在网站的根目录下存放favicon图标，防止404请求(使用fiddler可以监听到)，在页面上需加link如下：
+``` <link rel="shortcut icon" href="/favicon.ico">```
+
+因此页面上通用的模板如下：
+
+```
+<!DOCTYPE html>
+ <html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta content="email=no" name="format-detection">
+        <title>标题</title>
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body>
+        这里开始内容
+    </body>
+</html>
+```
