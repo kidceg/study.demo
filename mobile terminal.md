@@ -290,3 +290,14 @@ a,button,input,optgroup,select,textarea{
     </body>
 </html>
 ```
+###**四：移动端如何定义字体font-family**
+
+```body{font-family: "Helvetica Neue", Helvetica, sans-serif;}```
+
+###**五：在android或者IOS下 拨打电话代码如下**：
+
+```<a href="tel:15602512356">打电话给:15602512356</a>```
+
+###**六：发短信(winphone系统无效)**
+
+```<a href="sms:10010">发短信给: 10010</a>```
