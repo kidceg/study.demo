@@ -333,3 +333,16 @@ a,button,input,optgroup,select,textarea{
    \7. 内容包含链接，含http(s)://等的文本自动转化为链接。如下代码：
    ```<p><a href="mailto:tugenhua@126.com?body=http://www.baidu.com">内容包含链接，含http(s)://等的文本自动转化为链接</a></p>```
 
+###**八：webkit表单输入框placeholder的颜色值改变：**
+
+如果想要默认的颜色显示红色，代码如下：
+​```​	input::-webkit-input-placeholder{color:red;}```
+​	如果想要用户点击变为蓝色，代码如下：
+```	input:focus::-webkit-input-placeholder{color:blue;}```
+
+###**九：移动端IOS手机下清除输入框内阴影，代码如下**
+```
+​input,textarea {
+   -webkit-appearance: none;
+​    }
+```
