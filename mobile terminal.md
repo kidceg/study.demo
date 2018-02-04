@@ -342,7 +342,13 @@ a,button,input,optgroup,select,textarea{
 
 ###**九：移动端IOS手机下清除输入框内阴影，代码如下**
 ```
-​input,textarea {
+input,textarea {
    -webkit-appearance: none;
-​    }
+    }
+```
+###十：在IOS中 禁止长按链接与图片弹出菜单
+```
+a, img {
+   -webkit-touch-callout: none;  
+	}
 ```
