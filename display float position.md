@@ -894,3 +894,37 @@ setCookie("name","hayden","s20");
 
 ### 本地文件创建一个cookie不生效，会是什么原因导致？
 出于安全考虑，chrome本地环境cookie是禁止的，可以给他个服务器环境，或者用firebox。
+
+
+
+# jquery 使用方法
+
+
+
+##### 一、选择网页元素
+
+jQuery的基本设计和主要用法，就是"选择某个网页元素，然后对其进行某种操作"。这是它区别于其他函数库的根本特点。
+
+　　　　使用jQuery的第一步，往往就是将一个选择表达式，放进构造函数jQuery()(简写为$)，然后得到被选中的元素。
+
+选择表达式可以是CSS选择器：
+
+ 
+
+```JavaScript
+1 $(document)//选择整个文档对象
+2 $('#myId')//选择ID为myId的网页元素  
+3 $('div.myClass')//选择class为myClass的div元素    
+4 $('input[name=first]')//选择name属性等于first的input元素
+```
+
+也可以是jQuery特有的表达式：
+
+```JavaScript
+1 $('a:first')//选择网页中第一个a元素  
+2 $('tr:odd')//选择表格的奇数行  
+3 $('#myForm :input')//选择表单中的input元素  
+4 $('div:visible') //选择可见的div元素  
+5 $('div:gt(2)')//选择所有的div元素，除了前三个  
+6 $('div:animated')//选择当前处于动画状态的div元素  
+```
