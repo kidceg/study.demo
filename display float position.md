@@ -928,3 +928,59 @@ jQuery的基本设计和主要用法，就是"选择某个网页元素，然后�
 5 $('div:gt(2)')//选择所有的div元素，除了前三个  
 6 $('div:animated')//选择当前处于动画状态的div元素  
 ```
+##### 二、改变结果集
+
+如果选中多个元素，jQuery提供过滤器，可以缩小结果集：
+
+```JavaScript
+1 $('div').has('p'); //选择包含p元素的div元素  
+2 $('div').not('.myClass'); //选择class不等于myClass的div元素  
+3 $('div').filter('.myClass'); //选择class等于myClass的div元素  
+4 $('div').first(); //选择第1个div元素  
+5 $('div').eq(5); //选择第6个div元素  
+```
+
+有一些时候，我们需要从结果集出发，移动到附近的相关元素，jQuery也提供了在DOM树上的移动方法：
+
+```JavaScript
+1 $('div').next('p'); //选择div元素后面的第一个p元素  
+2 $('div').parent(); //选择div元素的父元素  
+3 $('div').closest('form'); //选择离div最近的那个form父元素  
+4 $('div').children(); //选择div的所有子元素  
+5 $('div').siblings(); //选择div的同级元素  
+```
+
+##### 三、链式操作
+
+选中网页元素以后，就可以对它进行某种操作。
+
+jQuery允许将所有操作连接在一起，以链条的形式写出来，比如：
+
+```JavaScript
+1 $('div').find('h3').eq(2).html('Hello');  
+```
+
+我们可以这样拆封开来，就是下面这样：
+
+```JavaScript
+1 $('div')//找到div元素  
+2 .find('h3')//选择其中的h3元素  
+3 .eq(2)//选择第3个h3元素  
+4 .html('Hello'); //将它的内容改为Hello  
+```
+
+ 
+
+这是jQuery最令人称道、最方便的特点。它的原理在于每一步的jQuery操作，返回的都是一个jQuery对象，所以不同操作可以连在一起。
+
+jQuery还提供了.end()方法，使得结果集可以后退一步：
+
+```JavaScript
+1 $('div')  
+2 .find('h3')  
+3 .eq(2)  
+4 .html('Hello')  
+5 .end()//退回到选中所有的h3元素的那一步  
+6 .eq(0)//选中第一个h3元素  
+7 .html('World'); //将它的内容改为World  
+```
