@@ -1089,3 +1089,130 @@ $('p').after('div');
 11 $.isPlainObject() 判断某个参数是否为用"{}"或"new Object"建立的对象。  
 12 $.support() 判断浏览器是否支持某个特性。  
 ```
+##### 八、事件操作
+
+jQuery可以对网页元素绑定事件。根据不同的事件，运行相应的函数。
+
+```JavaScript
+1 $('p').click(function(){  
+2 alert('Hello');  
+3 }); 
+```
+
+目前，jQuery主要支持以下事件：
+
+
+
+```JavaScript
+ 1 .blur() 表单元素失去焦点。  
+ 2 .change() 表单元素的值发生变化  
+ 3 .click() 鼠标单击  
+ 4 .dblclick() 鼠标双击  
+ 5 .focus() 表单元素获得焦点  
+ 6 .focusin() 子元素获得焦点  
+ 7 .focusout() 子元素失去焦点  
+ 8 .hover() 同时为mouseenter和mouseleave事件指定处理函数  
+ 9 .keydown() 按下键盘（长时间按键，只返回一个事件）  
+10 .keypress() 按下键盘（长时间按键，将返回多个事件）  
+11 .keyup() 松开键盘  
+12 .load() 元素加载完毕  
+13 .mousedown() 按下鼠标  
+14 .mouseenter() 鼠标进入（进入子元素不触发）  
+15 .mouseleave() 鼠标离开（离开子元素不触发）  
+16 .mousemove() 鼠标在元素内部移动  
+17 .mouseout() 鼠标离开（离开子元素也触发）  
+18 .mouseover() 鼠标进入（进入子元素也触发）  
+19 .mouseup() 松开鼠标  
+20 .ready() DOM加载完成  
+21 .resize() 浏览器窗口的大小发生改变  
+22 .scroll() 滚动条的位置发生变化  
+23 .select() 用户选中文本框中的内容  
+24 .submit() 用户递交表单  
+25 .toggle() 根据鼠标点击的次数，依次运行多个函数  
+26 .unload()  用户离开页面  
+```
+
+
+
+以上这些事件在jQuery内部，都是.bind()的便捷方式。使用.bind()可以更灵活地控制事件，比如为多个事件绑定同一个函数：
+
+
+
+```JavaScript
+1 $('input').bind(  
+2 'click change'， //同时绑定click和change事件  
+3 function(){  
+4 alert('Hello');  
+5 }  
+6 );  
+```
+
+
+
+如果你只想让事件运行一次，这时可以使用.one()方法。
+
+```JavaScript
+1 $("p").one("click"， function(){  
+2 alert("Hello"); //只运行一次，以后的点击不会运行  
+3 });  
+```
+
+.unbind()用来解除事件绑定。
+
+```JavaScript
+$('p').unbind('click'); 
+```
+
+所有的事件处理函数，都可以接受一个事件对象(event object)作为参数，比如下面例子中的e：
+
+```JavaScript
+1 $("p").click(function(e){  
+2 alert(e.type); //"click"  
+3 }); 
+```
+
+**这个事件对象有一些很有用的属性和方法：**
+
+
+
+```JavaScript
+ 1 event.pageX 事件发生时，鼠标距离网页左上角的水平距离
+ 2 
+ 3 event.pageY 事件发生时，鼠标距离网页左上角的垂直距离
+ 4 
+ 5 event.type 事件的类型(比如click)
+ 6 
+ 7 event.which 按下了哪一个键
+ 8 
+ 9 event.data 在事件对象上绑定数据，然后传入事件处理函数
+10 
+11 event.target 事件针对的网页元素
+12 
+13 event.preventDefault() 阻止事件的默认行为(比如点击链接，会自动打开新页面)
+14 
+15 event.stopPropagation() 停止事件向上层元素冒泡
+```
+
+
+
+**在事件处理函数中，可以用this关键字，返回事件针对的DOM元素：**
+
+
+
+```JavaScript
+1 $('a').click(function(){  
+2 if ($(this).attr('href').match('evil')){//如果确认为有害链接  
+3 e.preventDefault(); //阻止打开  
+4 $(this).addClass('evil'); //加上表示有害的class  
+5 }  
+6 });  
+```
+
+
+
+有两种方法，可以自动触发一个事件。一种是直接使用事件函数，另一种是使用.trigger()或.triggerHandler()。
+
+```JavaScript
+1 $('a').click();
+2 $('a').trigger('click');
+```
