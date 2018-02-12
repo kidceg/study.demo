@@ -1216,3 +1216,69 @@ $('p').unbind('click');
 1 $('a').click();
 2 $('a').trigger('click');
 ```
+
+##### 九、特殊效果
+
+jQuery允许对象呈现某些特殊效果。
+
+```JavaScript
+$('h1').show(); //展现一个h1标题 
+```
+
+常用的特殊效果如下：
+
+
+
+```JavaScript
+ 1 $('h1').show(); //展现一个h1标题 
+ 2 常用的特殊效果如下：
+ 3 .fadeIn() 淡入
+ 4 .fadeOut() 淡出
+ 5 .fadeTo() 调整透明度
+ 6 .hide() 隐藏元素
+ 7 .show() 显示元素
+ 8 .slideDown() 向下展开
+ 9 .slideUp() 向上卷起
+10 .slideToggle() 依次展开或卷起某个元素
+11 .toggle() 依次展示或隐藏某个元素
+```
+
+
+
+除了.show()和.hide()，所有其他特效的默认执行时间都是400ms(毫秒)，但是你可以改变这个设置。
+
+```JavaScript
+1 $('h1').fadeIn(300); // 300毫秒内淡入  
+2 $('h1').fadeOut('slow'); //缓慢地淡出 
+```
+
+在特效结束后，可以指定执行某个函数。
+
+```JavaScript
+$('p').fadeOut(300, function(){$(this).remove(); }); 
+```
+
+更复杂的特效，可以用.animate()自定义。
+
+
+
+```JavaScript
+1 $('div').animate(  
+2 {  
+3 left : "+=50"，//不断右移  
+4 opacity : 0.25 //指定透明度  
+5 },
+6 300,// 持续时间  
+7 function(){ alert('done!'); }//回调函数  
+8 ); 
+```
+
+
+
+ 
+
+```JavaScript
+.stop()和.delay()用来停止或延缓特效的执行。
+
+$.fx.off如果设置为true，则关闭所有网页特效。
+```
