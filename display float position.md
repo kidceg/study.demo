@@ -1282,3 +1282,15 @@ $('p').fadeOut(300, function(){$(this).remove(); });
 
 $.fx.off如果设置为true，则关闭所有网页特效。
 ```
+
+### 一.实现样式设置、追加、移除与切换的方法
+
+####  1.  attr()
+
+* 获取class和设置class都可以使用attr()方法来完成
+* attr()方法是将原来的class替换为新的class，而不是在原来的基础上追加新的class
+
+```javascript
+$("p").attr("'class", "high");
+ //设置p元素的class为 "high"
+```
