@@ -1294,3 +1294,20 @@ $.fx.off如果设置为true，则关闭所有网页特效。
 $("p").attr("'class", "high");
  //设置p元素的class为 "high"
 ```
+#### 2.  追加样式    addClass()  
+
+```
+ .high{ color:red; }
+ .another{ font-style:italic; color:blue; }
+```
+
+* 然后在网页中添加一个“追加class类”的按钮，按钮的事件代码如下：
+
+```javascript
+ $("#btn_3").click(function(){
+   $("#nm_p").addClass("another");
+   // 追加样式,此时p元素同时拥有两个class值，即"high"和"another"
+ });
+```
+
+* 在以上的样式中，存在两个“color”属性，而后面的“color”属性会覆盖前面的“color”属性，因此最终的“color”属性的值为“blue”，而不是“red”。
