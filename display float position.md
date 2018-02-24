@@ -1311,3 +1311,44 @@ $("p").attr("'class", "high");
 ```
 
 * 在以上的样式中，存在两个“color”属性，而后面的“color”属性会覆盖前面的“color”属性，因此最终的“color”属性的值为“blue”，而不是“red”。
+
+####3.  移除样式    removeClass()
+
+```javascript
+ $("p").removeClass("high");
+ //移除p元素中值为"high"的class
+```
+
+* 可以以空格的方式删除多个class名:
+
+```javascript
+$("p").removeClass("high another");
+```
+
+* 当它不带参数时，就会将class的值全部删除
+
+
+```javascript
+$("p").removeClass();
+ //移除p元素的所有class
+```
+
+#### 4.  切换样式     toggle() 
+
+```javascript
+ toggleBtn.toggle(function(){
+   //元素显示 代码③
+ }, function(){
+   //元素隐藏 代码④
+ })
+```
+
+* toggle()方法此处的作用是交替执行代码③和代码④两个函数，如果元素原来是显示的，则隐藏它：如果元素原来是隐藏的，则显示它。此时，toggle()方法主要是控制行为上的重复切换。
+* 另外JQuery还提供了一个toggleClass()方法控制样式上的重复切换。如果类名存在则删除它，如果类名不存在则添加它。例如对p元素进行toggleClass()方法操作。
+
+```javascript
+$("p").toggleClass("another");
+//重复切换类名“another”
+```
+
+当不断单击“切换样式”按钮时，p元素的class的值就会在“myClass”和“myClass another”之间重复切换。
