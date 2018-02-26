@@ -1352,3 +1352,18 @@ $("p").toggleClass("another");
 ```
 
 当不断单击“切换样式”按钮时，p元素的class的值就会在“myClass”和“myClass another”之间重复切换。
+
+#### 5.  判断是否含有某个样式  hasClass()  或   is()
+
+* 如果有，则返回true，否则返回false
+* 例如可以使用下面的代码来判断p元素中是否含有“another”的class：
+
+```javascript
+$("p").hasClass("another");
+```
+
+* 这个方法是为了增强代码可读性面产生的。在JQuery内部实际上是调用了is()方法来完成这个功能的．该方法等价于如下代码：
+
+```javascript
+$("p").is(".another");//is("."+class);
+```
