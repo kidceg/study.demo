@@ -1367,3 +1367,14 @@ $("p").hasClass("another");
 ```javascript
 $("p").is(".another");//is("."+class);
 ```
+### 二.事件的注册
+
+#### 1.  普通的注册简单的事件
+
+普通的注册简单的事件，缺点只能注册一个事件
+
+```javascript
+$("p").click(function(){
+    alert("简单的事件");
+})
+```
