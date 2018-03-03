@@ -140,3 +140,180 @@ Error: ENOENT: no such file or directory, stat 'D:\xxxxxapp\static\*'
 ```
 
 此时，可以尝试更新shelljs包的版本，如项目中shelljs当前版本是0.6.0，那么可以更新至0.7.4（npm update shelljs@0.7.4）后再次进行build命令
+
+#Vue.js常用指令总结		
+
+有时候指令太多会造成记错、记混的问题，所以本文在记忆的时候会采用穿插记忆的方式，交叉比对，不易出错。
+
+本文主要讲了一下六个指令：
+
+v-if//v-show//v-else//v-for//v-bind//v-on
+
+\1. v-if 条件渲染指令，根据其后表达式的bool值进行判断是否渲染该元素；
+
+eg:  
+
+　　HTML: 
+```
+<div id="example01">
+    <p v-if="male">Male</p>
+    <p v-if="female">Female</p>
+    <p v-if="age>25">Age:{{age}}</p>
+    <p v-if="name.indexOf('lin')>0">Name:{{name}}</p>
+</div>
+```
+
+　　JS:
+```
+var vm= new Vue({
+        el:"#example01",
+        data:{
+            male:true,
+            female: false,
+            age:29,
+            name:'colin'
+        }
+    })
+```
+页面渲染效果：
+
+![img](https://images2015.cnblogs.com/blog/862173/201608/862173-20160814162621609-999115737.png)
+
+所以，v-if指令只渲染他身后表达式为true的元素；在这里引入v-show指令，因为二者的区别是v-show指令会渲染他身后表达式为false的元素，这样的元素上会添加css代码：style="display:none"; 将上面v-if的实例代码改为v-show，页面渲染效果为：
+
+![img](https://images2015.cnblogs.com/blog/862173/201608/862173-20160814163007687-760368450.png)
+
+ 
+
+2, v-show 与v-if类似，只是会渲染其身后表达式为false的元素，而且会给这样的元素添加css代码：style="display:none";
+
+3, v-else 必须跟在v-if/v-show指令之后，不然不起作用；
+
+如果v-if/v-show指令的表达式为true，则else元素不显示；如果v-if/v-show指令的表达式为false，则else元素显示在页面上；
+
+eg: 
+```
+<div id="app">
+<h1 v-if="age >= 25">Age: {{ age }}</h1>
+<h1 v-else>Name: {{ name }}</h1>
+<hr>
+<h1 v-show="name.indexOf('cool') = 0">Name: {{ name }}</h1>
+<h1 v-else>Sex: {{ sex }}</h1>
+</div>
+
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            age: 21,
+            name: 'keepcool',
+            sex: 'Male'
+        }
+    })
+</script>
+```
+
+4, v-for  类似JS的遍历，用法为 v-for="item in items", items是数组，item为数组中的数组元素。
+
+eg:
+```
+CSS:
+<style>
+table,th,tr,td{
+            border:1px solid #ffcccc;
+            border-collapse: collapse;
+        }
+</style>
+HTML:
+<div id="example03">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Sex</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="person in people">
+            <td>{{ person.name  }}</td>
+            <td>{{ person.age  }}</td>
+            <td>{{ person.sex  }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+JS:
+<script>
+    var vm = new Vue({
+        el: '#example03',
+        data: {
+            people: [{
+                name: 'Jack',
+                age: 30,
+                sex: 'Male'
+            }, {
+                name: 'Bill',
+                age: 26,
+                sex: 'Male'
+            }, {
+                name: 'Tracy',
+                age: 22,
+                sex: 'Female'
+            }, {
+                name: 'Chris',
+                age: 36,
+                sex: 'Male'
+            }]
+        }
+    })
+</script>
+```
+
+页面效果：
+
+![img](https://images2015.cnblogs.com/blog/862173/201608/862173-20160814164529406-1638623608.png)
+
+ 
+
+5, v-bind  这个指令用于响应地更新 HTML 特性，比如绑定某个class元素或元素的style样式。
+
+eg,分页功能中当前页数高亮的效果，可以使用bind指令。
+
+```
+<ul class="pagination">
+                <li v-for="n in pageCount">
+                    <a href="javascripit:void(0)" v-bind:class="activeNumber === n + 1 ? 'active' : ''">{{ n + 1 }}</a>
+                </li>
+            </ul>
+```
+
+6, v-on  用于监听指定元素的DOM事件，比如点击事件。
+
+eg:
+
+```
+<div id="example04">
+        <input type="text" v-model="message">
+        <button v-on:click="greet">Greet</button>
+        <!-- v-on指令可以缩写为@符号-->
+     <button @click="greet">Greet Again</button>
+    </div>
+<script>
+    var exampleData04={
+        message:"Nice meeting U"
+    };
+    var vm2=new Vue({
+        el:"#example04",
+        data:exampleData04,
+        methods:{
+            greet:function(){
+                alert(this.message);
+            }
+         
+        }
+    })
+</script>
+```
+
