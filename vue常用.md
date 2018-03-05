@@ -345,3 +345,71 @@ beforeDestroy：实例销毁之前调用
 
 props:用于接收来自父组件的数据
 template：组件模板
+
+# vue常用介绍
+
+## v-if指令
+
+`v-if`是条件渲染指令，它根据表达式的真假来删除和插入元素，它的基本语法如下：
+
+```
+v-if="expression"
+```
+
+expression是一个返回bool值的表达式，表达式可以是一个bool属性，也可以是一个返回bool的运算式。例如：
+
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Hello, Vue.js!</h1>
+            <h1 v-if="yes">Yes!</h1>
+            <h1 v-if="no">No!</h1>
+            <h1 v-if="age >= 25">Age: {{ age }}</h1>
+            <h1 v-if="name.indexOf('jack') >= 0">Name: {{ name }}</h1>
+        </div>
+    </body>
+    <script src="js/vue.js"></script>
+    <script>
+        
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                yes: true,
+                no: false,
+                age: 28,
+                name: 'keepfool'
+            }
+        })
+    </script>
+</html>
+```
+
+**注意：**yes, no, age, name这4个变量都来源于Vue实例选项对象的data属性。
+
+[![image](https://images2015.cnblogs.com/blog/341820/201606/341820-20160627065314546-1211050706.png)](http://images2015.cnblogs.com/blog/341820/201606/341820-20160627065313781-1005102718.png)
+
+这段代码使用了4个表达式：
+
+- 数据的`yes`属性为true，所以"Yes!"会被输出；
+- 数据的`no`属性为false，所以"No!"不会被输出；
+- 运算式`age >= 25`返回true，所以"Age: 28"会被输出；
+- 运算式`name.indexOf('jack') >= 0`返回false，所以"Name: keepfool"不会被输出。
+
+**注意：**v-if指令是根据条件表达式的值来执行**元素的插入或者删除行为。**
+
+这一点可以从渲染的HTML源代码看出来，面上只渲染了3个<h1>元素，`v-if`值为false的<h1>元素没有渲染到HTML。
+
+[![image](https://images2015.cnblogs.com/blog/341820/201606/341820-20160627065316265-161676773.png)](http://images2015.cnblogs.com/blog/341820/201606/341820-20160627065315515-1776406933.png)
+
+为了再次验证这一点，可以在Chrome控制台更改age属性，使得表达式`age >= 25`的值为false，可以看到`<h1>Age: 28</h1>`元素被删除了。
+
+[![3](https://images2015.cnblogs.com/blog/341820/201606/341820-20160627065319406-1162614113.gif)](http://images2015.cnblogs.com/blog/341820/201606/341820-20160627065317577-1183006666.gif)
+
+age是定义在选项对象的data属性中的，为什么Vue实例可以直接访问它呢？
+这是因为**每个Vue实例都会代理其选项对象里的data属性。**
