@@ -413,3 +413,46 @@ expression是一个返回bool值的表达式，表达式可以是一个bool属�
 
 age是定义在选项对象的data属性中的，为什么Vue实例可以直接访问它呢？
 这是因为**每个Vue实例都会代理其选项对象里的data属性。**
+
+## v-show指令
+
+`v-show`也是条件渲染指令，和v-if指令不同的是，使用`v-show`指令的元素始终会被渲染到HTML，它只是简单地为元素设置CSS的style属性。
+
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Hello, Vue.js!</h1>
+            <h1 v-show="yes">Yes!</h1>
+            <h1 v-show="no">No!</h1>
+            <h1 v-show="age >= 25">Age: {{ age }}</h1>
+            <h1 v-show="name.indexOf('jack') >= 0">Name: {{ name }}</h1>
+        </div>
+    </body>
+    <script src="js/vue.js"></script>
+    <script>
+        
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                yes: true,
+                no: false,
+                age: 28,
+                name: 'keepfool'
+            }
+        })
+    </script>
+</html>
+```
+
+## [![image](https://images2015.cnblogs.com/blog/341820/201606/341820-20160627065321359-1780927154.png)](http://images2015.cnblogs.com/blog/341820/201606/341820-20160627065320577-322007545.png)
+
+在Chrome控制台更改age属性，使得表达式`age >= 25`的值为false，可以看到`<h1>Age: 24</h1>`元素被设置了style="display:none"样式。
+
+[![4](https://images2015.cnblogs.com/blog/341820/201606/341820-20160627065324343-1072339483.gif)](http://images2015.cnblogs.com/blog/341820/201606/341820-20160627065322656-1570128969.gif)
+
