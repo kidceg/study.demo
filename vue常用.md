@@ -456,3 +456,109 @@ age是定义在选项对象的data属性中的，为什么Vue实例可以直接�
 
 [![4](https://images2015.cnblogs.com/blog/341820/201606/341820-20160627065324343-1072339483.gif)](http://images2015.cnblogs.com/blog/341820/201606/341820-20160627065322656-1570128969.gif)
 
+## v-else指令
+
+可以用v-else指令为v-if或v-show添加一个“else块”。v-else元素必须立即跟在v-if或v-show元素的后面——否则它不能被识别。
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <h1 v-if="age >= 25">Age: {{ age }}</h1>
+            <h1 v-else>Name: {{ name }}</h1>
+            <h1>---------------------分割线---------------------</h1>
+            <h1 v-show="name.indexOf('keep') >= 0">Name: {{ name }}</h1>
+            <h1 v-else>Sex: {{ sex }}</h1>
+        </div>
+    </body>
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                age: 28,
+                name: 'keepfool',
+                sex: 'Male'
+            }
+        })
+    </script>
+</html>
+
+v-else元素是否渲染在HTML中，取决于前面使用的是v-if还是v-show指令。
+这段代码中v-if为true，后面的v-else不会渲染到HTML；v-show为tue，但是后面的v-else仍然渲染到HTML了。
+
+
+
+## v-for指令
+
+v-for指令基于一个数组渲染一个列表，它和JavaScript的遍历语法相似：
+
+v-for="item in items"
+
+items是一个数组，item是当前被遍历的数组元素。
+隐藏代码
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="styles/demo.css" />
+    </head>
+    
+    <body>
+        <div id="app">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="person in people">
+                        <td>{{ person.name  }}</td>
+                        <td>{{ person.age  }}</td>
+                        <td>{{ person.sex  }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                people: [{
+                    name: 'Jack',
+                    age: 30,
+                    sex: 'Male'
+                }, {
+                    name: 'Bill',
+                    age: 26,
+                    sex: 'Male'
+                }, {
+                    name: 'Tracy',
+                    age: 22,
+                    sex: 'Female'
+                }, {
+                    name: 'Chris',
+                    age: 36,
+                    sex: 'Male'
+                }]
+            }
+        })
+    </script>
+
+</html>
+
+我们在选项对象的data属性中定义了一个people数组，然后在#app元素内使用v-for遍历people数组，输出每个person对象的姓名、年龄和性别。
+
