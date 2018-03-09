@@ -346,7 +346,30 @@ beforeDestroy：实例销毁之前调用
 props:用于接收来自父组件的数据
 template：组件模板
 
-# 最新的vue没有dev-server.js文件，如何进行后台数据模拟？最新的vue-webpack-template 中已经去掉了dev-server.js 但是要进行模拟后台数据的，如何模拟本地数据操作？ 
+# sublime安装stylus插件
+
+如果你使用sublime，你可以ctrl+shift+p调出控制台然后输入install package然后输入stylus然后回车安装，安装成功后在package settings你会看到如蓝色背景条所示
+![img](https://segmentfault.com/img/bVvLAn)
+展开蓝色背景条，在setting-user里面进行配置即可
+
+```
+{
+    "envPATH": "",  //环境的路径 
+    "binDir": "",   //项目路径
+    "compileOnSave": true,  //是否编辑保存
+    "compileDir": true,   //编译到指定目录
+    "compress": true,  //是否压缩
+    "compilePaths": {"": ""}  //输出路径
+}
+```
+
+设置完成之后建立.styl文件，然后编辑保存，你就会在输出路径里面看到编译好的css文件了
+
+
+
+# 最新的vue没有dev-server.js文件，如何进行后台数据模拟？ 
+
+最新的vue-webpack-template 中已经去掉了dev-server.js 但是要进行模拟后台数据的，如何模拟本地数据操作？
 
 解决方法： 
 dev-server.js 改用webpack-dev-conf.js代替。 
