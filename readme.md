@@ -1831,3 +1831,8 @@ function dblLinear(n) {
     }
 }
 ```
+### 34.草料二维码
+
+可以生产二维码手机扫描同步手机测试
+
+https://cli.im/
