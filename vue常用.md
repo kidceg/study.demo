@@ -365,7 +365,9 @@ template：组件模板
 
 设置完成之后建立.styl文件，然后编辑保存，你就会在输出路径里面看到编译好的css文件了
 
+# css sticky footers
 
+https://www.w3cplus.com/css3/css-secrets/sticky-footers.html
 
 # 最新的vue没有dev-server.js文件，如何进行后台数据模拟？ 
 
