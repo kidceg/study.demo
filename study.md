@@ -1856,3 +1856,17 @@ Safari：webkit内核
 Opera：以前是presto内核，Opera现已改用Google Chrome的Blink内核
 
 Chrome：Blink(基于webkit，Google与Opera Software共同开发)
+
+## 37、建立路径所使用的几个特殊符号，及其所代表的意义
+
+ `.`：代表目前所在的目录，相对路径。如：`<a href="./abc">……</a>`或`<img src="./abc" />`
+
+ `..`：代表上一层目录，相对路径。如：`<a href="../abc">……</a>`或`<img src="../abc" />`
+
+ `../../`：代表的是上一层目录的上一层目录，相对路径。如：`<imgsrc="../../abc" />`
+
+ `/`：代表根目录，绝对路径。如：`<a href="/abc">``文本</a>`或`<img src="/abc" />`
+
+ `D:/abc/`：代表根目录，绝对路径。
+
+在使用相对路径时，我们用符号“.”来表示当前目录，用符号“..”来表示当前目录的父目录。
