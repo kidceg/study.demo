@@ -1870,3 +1870,44 @@ Chrome：Blink(基于webkit，Google与Opera Software共同开发)
  `D:/abc/`：代表根目录，绝对路径。
 
 在使用相对路径时，我们用符号“.”来表示当前目录，用符号“..”来表示当前目录的父目录。
+
+## 38.构造函数
+
+```JavaScript
+//构造函数
+        var myConstructor = function (msg){
+            this.msg = msg;
+        //私有属性
+            var separator = '-';
+            var that = this;
+        //私有方法    
+            function alertMsg(){
+                alert(that.msg);
+            }
+            alertMsg();
+        //特权方法    
+            this.appendToMsg = function(str){
+                this.msg += separator + str;
+                alertMsg();
+            }
+        }
+        //公有方法
+        myConstructor.prototype.clearMsg = function(str){this.msg = '';};
+        
+        
+        //静态属性
+        myConstructor.youName = 'Bolen';
+        //静态方法
+        myConstructor.sayName = function(){
+            alert(this.youName);
+        }
+    
+        var a = new myConstructor("hi");
+        a.appendToMsg("Ryan");
+        
+        myConstructor.sayName();
+        
+    //对象字面量语法会自动创建Object对象的实例，但不能使用new关键字对其再次进行实例化。
+    //如果要使用同样的对象字面量语法来构建一个带有公有方法的构造函数，仍然需要从作为
+    //构造函数的Function对象开始
+```
