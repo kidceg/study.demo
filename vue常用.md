@@ -346,6 +346,22 @@ beforeDestroy：实例销毁之前调用
 props:用于接收来自父组件的数据
 template：组件模板
 
+# 手机端看——草料二维码
+
+https://cli.im/  草料二维码生成器
+
+本地的http://localhost:8080怎么在手机上看呢
+
+mac打开cmd输入ifconfig运行
+
+Windows打开cmd输入ipconfig运行
+
+查找到有一行显示：本地链接地址IPv6地址：10.0.0.4
+
+把这个10.0.0.4替换到localhost，把原来的http://localhost:8080/#/goods改变成http://10.0.0.4:8080/#/goods
+
+然后放到二维码生成器那里就可以用手机扫了看了
+
 # sublime安装stylus插件
 
 如果你使用sublime，你可以ctrl+shift+p调出控制台然后输入install package然后输入stylus然后回车安装，安装成功后在package settings你会看到如蓝色背景条所示
