@@ -762,3 +762,63 @@ items是一个数组，item是当前被遍历的数组元素。
 
 我们在选项对象的data属性中定义了一个people数组，然后在#app元素内使用v-for遍历people数组，输出每个person对象的姓名、年龄和性别。
 
+## vue的computed怎么使用？
+
+在模板中表达式非常便利，但是它们实际上只用于简单的操作。模板是为了描述视图的结构。在模板中放入太多的逻辑会让模板过重且难以维护。这就是为什么 Vue.js 将绑定表达式限制为一个表达式。如果需要多于一个表达式的逻辑，应当使用**计算属性** 。
+
+```
+<div id="example">
+  a={{ a }}, b={{ b }}
+</div>
+```
+
+```
+var vm = new Vue({
+  el: '#example',
+  data: {
+    a: 1
+  },
+  computed: {
+    // 一个计算属性的 getter
+    b: function () {
+      // `this` 指向 vm 实例
+      return this.a + 1
+    }
+  }
+})
+```
+
+结果：
+
+```
+{% raw %}
+<div id="example" class="demo">
+  a={{ a }}, b={{ b }}
+</div>
+<script>
+var vm = new Vue({
+  el: '#example',
+  data: {
+    a: 1
+  },
+  computed: {
+    b: function () {
+      return this.a + 1
+    }
+  }
+})
+</script>
+{% endraw %}
+```
+
+这里我们声明了一个计算属性 `b`。我们提供的函数将用作属性 `vm.b`的 getter。
+
+```
+console.log(vm.b) // -> 2
+vm.a = 2
+console.log(vm.b) // -> 3
+```
+
+你可以打开浏览器的控制台，修改例子的 vm。`vm.b` 的值始终取决于 `vm.a` 的值。
+
+你可以像绑定普通属性一样在模板中绑定计算属性。Vue 知道 `vm.b` 依赖于 `vm.a`，因此当 `vm.a` 发生改变时，依赖于 `vm.b` 的绑定也会更新。而且最妙的是我们是声明式地创建这种依赖关系：计算属性的 getter 是干净无副作用的，因此也是易于测试和理解的。
