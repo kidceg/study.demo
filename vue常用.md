@@ -889,3 +889,30 @@ computed: {
 ```
 
 现在在调用 `vm.fullName = 'John Doe'` 时，setter 会被调用，`vm.firstName` 和 `vm.lastName` 也会有相应更新。
+
+## 条件渲染
+
+### v-if
+
+在字符串模板中，如 Handlebars，我们得像这样写一个条件块：
+
+```
+<!-- Handlebars 模板 -->
+{{#if ok}}
+  <h1>Yes</h1>
+{{/if}}
+```
+
+在 Vue.js，我们使用 `v-if` 指令实现同样的功能：
+
+```
+<h1 v-if="ok">Yes</h1>
+```
+
+也可以用 `v-else` 添加一个 "else" 块：
+
+```
+<h1 v-if="ok">Yes</h1>
+<h1 v-else>No</h1>
+```
+
