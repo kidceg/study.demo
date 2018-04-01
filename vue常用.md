@@ -916,3 +916,26 @@ computed: {
 <h1 v-else>No</h1>
 ```
 
+## template v-if
+
+因为 `v-if` 是一个指令，需要将它添加到一个元素上。但是如果我们想切换多个元素呢？此时我们可以把一个 `<template>` 元素当做包装元素，并在上面使用 `v-if`，最终的渲染结果不会包含它。
+
+```
+<template v-if="ok">
+  <h1>Title</h1>
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+</template>
+```
+
+## v-show
+
+另一个根据条件展示元素的选项是 `v-show` 指令。用法大体上一样：
+
+```
+<h1 v-show="ok">Hello!</h1>
+```
+
+不同的是有 `v-show` 的元素会始终渲染并保持在 DOM 中。`v-show` 是简单的切换元素的 CSS 属性 `display`。
+
+注意 `v-show` 不支持 `<template>` 语法。
