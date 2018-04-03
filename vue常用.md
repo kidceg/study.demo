@@ -939,3 +939,16 @@ computed: {
 不同的是有 `v-show` 的元素会始终渲染并保持在 DOM 中。`v-show` 是简单的切换元素的 CSS 属性 `display`。
 
 注意 `v-show` 不支持 `<template>` 语法。
+
+v-else
+
+可以用 v-else 指令给 v-if 或 v-show 添加一个 "else 块"：
+
+<div v-if="Math.random() > 0.5">
+  Sorry
+</div>
+<div v-else>
+  Not sorry
+</div>
+
+v-else 元素必须立即跟在 v-if 或 v-show 元素的后面——否则它不能被识别。
