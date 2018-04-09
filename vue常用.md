@@ -962,3 +962,63 @@ v-else 元素必须立即跟在 v-if 或 v-show 元素的后面——否则它�
 相比之下，`v-show` 简单得多——元素始终被编译并保留，只是简单地基于 CSS 切换。
 
 一般来说，`v-if` 有更高的切换消耗而 `v-show` 有更高的初始渲染消耗。因此，如果需要频繁切换 `v-show` 较好，如果在运行时条件不大可能改变 `v-if` 较好。
+
+## 方法处理器
+
+可以用 `v-on` 指令监听 DOM 事件：
+
+```
+<div id="example">
+  <button v-on:click="greet">Greet</button>
+</div>
+```
+
+我们绑定了一个单击事件处理器到一个方法 `greet`。下面在 Vue 实例中定义这个方法：
+
+```
+var vm = new Vue({
+  el: '#example',
+  data: {
+    name: 'Vue.js'
+  },
+  // 在 `methods` 对象中定义方法
+  methods: {
+    greet: function (event) {
+      // 方法内 `this` 指向 vm
+      alert('Hello ' + this.name + '!')
+      // `event` 是原生 DOM 事件
+      alert(event.target.tagName)
+    }
+  }
+})
+
+// 也可以在 JavaScript 代码中调用方法
+vm.greet() // -> 'Hello Vue.js!'
+```
+
+自己测试一下：
+
+```
+{% raw %}
+<div id="example" class="demo">
+  <button v-on:click="greet">Greet</button>
+</div>
+<script>
+var vm = new Vue({
+  el: '#example',
+  data: {
+    name: 'Vue.js'
+  },
+  // 在 `methods` 对象中定义方法
+  methods: {
+    greet: function (event) {
+      // 方法内 `this` 指向 vm
+      alert('Hello ' + this.name + '!')
+      // `event` 是原生 DOM 事件
+      alert(event.target.tagName)
+    }
+  }
+})
+</script>
+{% endraw %}
+```
