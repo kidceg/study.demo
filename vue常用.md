@@ -1022,3 +1022,60 @@ var vm = new Vue({
 </script>
 {% endraw %}
 ```
+## 内联语句处理器
+
+除了直接绑定到一个方法，也可以用内联 JavaScript 语句：
+
+```
+<div id="example-2">
+  <button v-on:click="say('hi')">Say Hi</button>
+  <button v-on:click="say('what')">Say What</button>
+</div>
+```
+
+```
+new Vue({
+  el: '#example-2',
+  methods: {
+    say: function (msg) {
+      alert(msg)
+    }
+  }
+})
+```
+
+Result:
+
+```
+{% raw %}
+<div id="example-2" class="demo">
+  <button v-on:click="say('hi')">Say Hi</button>
+  <button v-on:click="say('what')">Say What</button>
+</div>
+<script>
+new Vue({
+  el: '#example-2',
+  methods: {
+    say: function (msg) {
+      alert(msg)
+    }
+  }
+})
+</script>
+{% endraw %}
+```
+
+类似于内联表达式，事件处理器限制为**一个语句**。
+
+有时也需要在内联语句处理器中访问原生 DOM 事件。可以用特殊变量 `$event` 把它传入方法：
+
+```
+<button v-on:click="say('hello!', $event)">Submit</button>
+// ...
+methods: {
+  say: function (msg, event) {
+    // 现在我们可以访问原生事件对象
+    event.preventDefault()
+  }
+}
+```
